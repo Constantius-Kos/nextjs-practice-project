@@ -59,7 +59,7 @@
 ### Частина E: API та Backend
 | 16 | Route Handlers (API routes у App Router) | ✅ Завершено | 3 | 05.06.2026 |
 | 17 | proxy.ts замість middleware | ✅ Завершено | 3 | 06.06.2026 |
-| 18 | Cookies та Headers | ⬜ | — | — |
+| 18 | Cookies та Headers | ✅ Завершено | 3 | 06.06.2026 |
 | 19 | Аутентифікація (Auth.js v5) | ⬜ | — | — |
 | 🏁 | Мікро-проєкт: API з аутентифікацією | ⬜ | — | — |
 
