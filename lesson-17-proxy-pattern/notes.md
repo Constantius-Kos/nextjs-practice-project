@@ -1,0 +1,118 @@
+# 📝 Нотатки Уроку 17: Proxy Pattern
+
+### ❓ Питання студента: Навіщо ми це робимо? Чи це перехоплення?
+
+**Коротко:** Ми не "перехоплюємо" магічно всі запити. Ми **свідомо** створюємо свій "чорний хід", щоб заховати секретні ключі від клієнта.
+
+#### 🏗️ Порівняння «В лоб» vs «Через Проксі»
+
+**1. Варіант «В лоб» (Небезпечно ❌):**
+*   У тебе є Client Component (`'use client'`).
+*   Ти робиш `fetch('https://api.openai.com/v1/...', { headers: { Auth: 'СЕКРЕТНИЙ_КЛЮЧ' } })`.
+*   **Результат:** Будь-яка людина заходить в Chrome DevTools -> вкладка Network -> бачить твій `СЕКРЕТНИЙ_КЛЮЧ`. Твої гроші на балансі OpenAI закінчуються за 5 хвилин, бо ключ вкрали.
+
+**2. Варіант «Через Проксі» (Безпечно ✅):**
+*   Ти створюєш свій файл `app/api/proxy/route.ts`.
+*   У Client Component ти робиш `fetch('/api/proxy')`. Ніяких ключів у браузері не передається!
+*   Твій сервер (Next.js) отримує запит `/api/proxy`.
+*   **ТІЛЬКИ ТАМ**, на сервері (де ніхто не бачить), він додає ключ із `.env` і шле запит до OpenAI.
+*   **Результат:** Ключ у безпеці, користувач бачить дані, але не знає пароля до API.
+
+#### 🧐 Чи замінює це звичайні роути?
+Ні.
+*   **Page роути** (`page.tsx`) — для відображення сторінок.
+*   **API роути** (`route.ts`) — для логіки твого додатку.
+*   **Proxy роути** — це спеціальний тип API роутів, які просто передають запит далі (як посередник), додаючи "секретності" або змінюючи формат даних.
+
+#### 🛠️ Про `[...path]` (Catch-all)
+Це "жадібна" папка. Уявімо, що ми створили файл: `app/api/proxy/[...path]/route.ts`.
+
+Тепер Next.js буде відправляти в цей один файл **всі** запити, які починаються на `/api/proxy/`:
+1. `/api/proxy/weather` -> обробить цей файл.
+2. `/api/proxy/crypto` -> обробить цей же файл.
+
+**Як же розрізнити їх всередині одного `GET`?**
+Ми використовуємо `params`. Next.js передає нам список слів з URL у вигляді масиву.
+
+```typescript
+// app/api/proxy/[...path]/route.ts
+export async function GET(req: NextRequest, { params }: { params: { path: string[] } }) {
+  const segments = await params.path; // ['weather'] або ['crypto']
+
+  // Ми просто використовуємо звичайний if або switch!
+  if (segments[0] === 'weather') {
+    return handleWeather();
+  }
+  
+  if (segments[0] === 'crypto') {
+    return handleCrypto();
+  }
+
+  return NextResponse.json({ error: 'Unknown route' });
+}
+```
+
+Це і є магія — один файл керує всіма під-маршрутами за допомогою звичайних умов `if/else`.
+
+---
+
+1.  **Виносимо логіку в окремі файли:**
+    *   `lib/proxies/weather.ts`
+    *   `lib/proxies/crypto.ts`
+2.  **В основному роуті просто імпортуємо їх:**
+
+```typescript
+import { handleWeather } from '@/lib/proxies/weather';
+import { handleCrypto } from '@/lib/proxies/crypto';
+
+const handlers: Record<string, Function> = {
+  weather: handleWeather,
+  crypto: handleCrypto
+};
+
+export async function GET(req: NextRequest, { params }: { params: { path: string[] } }) {
+  const [service] = await params.path;
+  const handler = handlers[service];
+
+  return handler ? handler(req) : NextResponse.json({ error: 'Not Found' }, { status: 404 });
+}
+```
+
+Так твій `route.ts` завжди залишается чистим і коротким!
+
+---
+
+### 🎯 Твій "А-га!" момент (Next.js як Full-stack)
+Ти абсолютно правий! Раніше тобі треба було два окремих проекти:
+1. **React** (Клієнт)
+2. **Node.js/Express** (Сервер для секретів та бази)
+
+У Next.js 16 ми об'єднали їх. Файли `route.ts` — це і є твій міні-Node.js сервер всередині проекту. 
+*   Все, що ти раніше робив на окремому бекенді (перевірка токенів, робота з `.env` ключами, проксіювання), тепер робиться в Route Handlers.
+*   Твої секрети з `.env` доступні тут, але ніколи не потраплять у браузер до користувача.
+
+---
+
+### ✉️ Навіщо нам Заголовки (Headers)?
+Заголовки — це як "наклейки" на посилці.
+
+**Навіщо ми їх додаємо в проксі?**
+1. **Мітка (Identification):** Ми хочемо знати, що запит пройшов саме через наш сервер, а не напряму.
+2. **Безпека:** Ми можемо додати `X-API-KEY` перед тим, як відправити запит далі.
+3. **Налагодження (Debugging):** У браузері ти побачиш `X-Proxied-By: MyNextApp` і зрозумієш: "О, мій проксі працює!".
+
+**Як це написати в коді?**
+Ми передаємо об'єкт з налаштуваннями у `NextResponse.json`:
+
+```typescript
+return NextResponse.json(data, {
+    headers: {
+        "X-Proxied-By": "MyNextApp",
+        "Content-Type": "application/json"
+    }
+});
+```
+
+---
+**Перевірка розуміння:**
+Якщо я хочу отримати ціну Біткоіна через API, де мені потрібен `API_KEY`, де я буду робити основний `fetch` (тобто той, що з ключем) — у компоненті React чи у файлі `route.ts`?
