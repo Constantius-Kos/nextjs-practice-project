@@ -1,4 +1,0 @@
-Password =u6SYJKoSxcrCZEqM
-Username = constantiuskos_db_user
-
-mongodb+srv://constantiuskos_db_user:u6SYJKoSxcrCZEqM@next.2mpicf8.mongodb.net/?appName=NEXT

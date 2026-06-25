@@ -1,0 +1,62 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #e5e5e5;
+  --gold-deep: #E8A923;
+  --gold-amber: #F59E0B;
+  --gold: #FFD700;
+  --gold-champagne: #C9A84C;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-gold-amber: var(--gold-amber);
+  --color-gold-champagne: var(--gold-champagne);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-monserrat: var(--font-monserrat);
+  --font-jetBrains-mono: var(--font-jetBrains-mono)
+}
+
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Custom Debug Utility */
+@utility debug {
+  @apply border border-dashed border-amber-50/50;
+}
+
+@utility text-glow {
+  text-shadow: 0 0 4px var(--color-gold-amber);
+}
+
+@utility scan-lines {
+  background: linear-gradient(to bottom,
+      rgba(255, 0, 0, 0.1) 0%,
+      /* Червона верхівка */
+      rgba(0, 255, 0, 0.1) 33%,
+      /* Зелена середина */
+      rgba(0, 0, 255, 0.1) 66%,
+      /* Синій низ */
+      transparent 66%
+      /* Решта — дірка */
+    );
+  background-size: 100% 9px;
+
+}
