@@ -3,7 +3,7 @@ import TypewriterEffect from "./TypewritterEffect";
 async function Terminal() {
     const commits = await getLatestComits()
     const commitLines = commits.map(c => ({
-        text: `${new Date(c.commit.author.date).toLocaleDateString()}: ${c.commit.message}`,
+        text: `${new Date(c.commit.author.date).toLocaleDateString('uk-UA')}: ${c.commit.message}`,
         className: "text-gold-amber"
     }));
     // Об'єднуємо: спочатку ініціалізація, потім — розпаковуємо комміти
@@ -28,7 +28,8 @@ async function Terminal() {
             </div>
             {/* 3. Область виводу тексту */}
             <div className="relative p-6 font-jetBrains-mono text-sm sm:text-base min-h-75 ">
-                <div className="absolute inset-0 pointer-events-none scan-lines" />
+                <div className="absolute inset-0 pointer-events-none scan-lines z-50" />
+
                 <TypewriterEffect lines={allLines} />
                 {/* Сюди ми потім додамо логіку друку тексту */}
                 {/* <div className="flex gap-2 text-primary">
