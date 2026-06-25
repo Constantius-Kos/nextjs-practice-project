@@ -6,9 +6,9 @@ const nextConfig: NextConfig = {
   reactCompiler: false,
   cacheLife: {
     'commits': {
-      stale: 900,
-      revalidate: 1800,
-      expire: 3600
+      stale: 60,
+      revalidate: 60,
+      expire: 60
     },
     // 'weather': {
     //   stale: 600,
