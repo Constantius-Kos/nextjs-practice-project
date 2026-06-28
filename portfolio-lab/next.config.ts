@@ -10,16 +10,21 @@ const nextConfig: NextConfig = {
       revalidate: 60,
       expire: 60
     },
-    // 'weather': {
-    //   stale: 600,
-    //   revalidate: 600,
-    //   expire: 6000
-    // },
-    // 'api-default': {
-    //   stale: 10,
-    //   revalidate: 15,
-    //   expire: 6000
-    // }
+    'weather': {
+      stale: 600,
+      revalidate: 600,
+      expire: 6000
+    },
+    'api-default': {
+      stale: 10,
+      revalidate: 15,
+      expire: 6000
+    },
+    'infinite': {
+      stale: 31536000,
+      revalidate: 31536000,
+      expire: 31536000
+    }
   },
 };
 
