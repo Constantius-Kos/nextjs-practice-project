@@ -36,10 +36,14 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable}${jetBrainsMono.variable}${montserrat.variable} h-full antialiased`}
     >
 
-      <Suspense>
-        <body className="min-h-full flex flex-col">
-          <MobileHeader />{children}</body>
-      </Suspense>
+      <body className="min-h-full flex flex-col">
+        <Suspense fallback={<div className="h-14 bg-black" />} >
+          <MobileHeader />
+        </Suspense>
+        <Suspense fallback={<div className="flex-1 flex items-center justify-center text-amber-500 font-mono">Loading laboratory console...</div>}>
+          {children}
+        </Suspense>
+      </body>
 
     </html>
 
