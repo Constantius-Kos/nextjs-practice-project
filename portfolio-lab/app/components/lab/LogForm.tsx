@@ -20,7 +20,7 @@ export default function LogForm() {
     }
 
     return (
-        <form action={handleSubmit} className="flex flex-col gap-4 p-4 border border-amber-500/30 rounded-lg bg-black/40 backdrop-blur-md shadow-lg shadow-amber-500/10">
+        <form action={handleSubmit} className="flex flex-col gap-4 p-4 border border-gold-deep/50 rounded-lg bg-black/40 backdrop-blur-md shadow-[0_0_20px_-10px_var(--gold-deep)]">
             <div className="flex flex-col gap-1">
                 <label htmlFor="author" className="text-xs uppercase tracking-tighter text-amber-500 font-mono">
                     [Identify Your Identity]

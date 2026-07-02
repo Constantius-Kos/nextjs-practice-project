@@ -14,7 +14,7 @@ async function Terminal() {
     // console.log('Terminal.tsx:', commits, '***Terminal.tsx***');
     return (
         // 1. Головна "коробка" з рамкою та розмиттям фону
-        <div className="w-full max-w-2xl mx-auto rounded-lg border border-gold-deep/50 bg-[#0a0a0a]/80 backdrop-blur-md overflow-hidden shadow-[0_0_40px_-10px_var(--gold-deep)]">
+        <div className="w-full  mx-auto rounded-lg border border-gold-deep/50 bg-[#0a0a0a]/80 backdrop-blur-md overflow-hidden shadow-[0_0_20px_-10px_var(--gold-deep)]">
 
             {/* 2. Шапка терміналу */}
             <div className="bg-white/5 px-4 py-2 flex items-center justify-between border-b border-white/5">
@@ -28,22 +28,10 @@ async function Terminal() {
             </div>
             {/* 3. Область виводу тексту */}
             <div className="relative p-6 font-jetBrains-mono text-sm sm:text-base min-h-75 ">
-                <div className="absolute inset-0 pointer-events-none scan-lines z-50" />
+                <div className="absolute  inset-0 pointer-events-none scan-lines z-50" />
 
                 <TypewriterEffect lines={allLines} />
-                {/* Сюди ми потім додамо логіку друку тексту */}
-                {/* <div className="flex gap-2 text-primary">
-                    <span className="opacity-50">$</span>
-                    <span>system.init()</span>
-                </div>
-                <div className="mt-2 text-white/60">
-                    {commits.map((c, i) =>
-                        <div key={i}>
-                            <span>{new Date(c.commit.author.date).toLocaleDateString()}:</span>
-                            <span> {c.commit.message}</span>
-                        </div>
-                    )}
-                </div> */}
+
             </div>
         </div>
     )

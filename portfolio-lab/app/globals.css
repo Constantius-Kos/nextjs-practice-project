@@ -39,11 +39,36 @@ body {
 
 /* Custom Debug Utility */
 @utility debug {
-  @apply border border-dashed border-amber-50/50;
+  @apply border-2 border-dashed border-amber-50;
+}
+
+@utility debug-red {
+  @apply border-2 border-dashed border-red-600;
+}
+
+@utility debug-green {
+  @apply border-2 border-dashed border-green-600;
+}
+
+@utility debug-blue {
+  @apply border-2 border-dashed border-blue-500;
+}
+
+@utility debug-purple {
+  @apply border-2 border-dashed border-purple-500;
+}
+
+@utility debug-cyan {
+  @apply border-2 border-dashed border-cyan-400;
+}
+
+@utility debug-gold {
+  @apply border-2 border-dashed border-gold-amber;
 }
 
 @utility text-glow {
   text-shadow: 0 0 4px var(--color-gold-amber);
+
 }
 
 @utility scan-lines {

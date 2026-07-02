@@ -7,7 +7,7 @@ function MobileHeader() {
     const [isOpen, setIsOpen] = useState<boolean>(false)
 
     const searchParams = useSearchParams();
-    const currentView = searchParams.get('view') || 'terminal'; // Дефолтне значення — 'terminal'
+    const currentView = searchParams.get('view') || ''; // Дефолтне значення — 'terminal'
 
     return (
         <header className="sticky  top-0 left-0 w-full  h-14 bg-black z-10 md:hidden">
