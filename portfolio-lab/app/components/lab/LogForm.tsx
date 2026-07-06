@@ -2,16 +2,28 @@
 import { createLogAction } from '@/app/lib/actions';
 import { useTransition } from 'react';
 import { useState } from 'react';
-// Шар 1: Скелет - Типізація та структура JSX
-export default function LogForm() {
+import type { Log } from '@prisma/client'
+
+interface LogFormProps {
+    addOptimisticLog: (newLog: Log) => void
+}
+
+
+export default function LogForm({ addOptimisticLog }: LogFormProps) {
     const [author, setAuthor] = useState<string>('')
     const [message, setMessage] = useState<string>('')
     const [isPending, startTransition] = useTransition();
 
-    // Функція-заглушка для обробки форми (Muscles будуть пізніше)
     async function handleSubmit(formData: FormData) {
         console.log("Form data capture:", Object.fromEntries(formData));
         startTransition(async () => {
+            const tempLog: Log = {
+                id: Math.random().toString(), // тимчасовий випадковий ID
+                author: author,              // ім'я з інпуту
+                message: message,            // повідомлення з textarea
+                createdAt: new Date()        // поточний час
+            }
+            addOptimisticLog(tempLog)
             await createLogAction(formData);
             // Після авейту можна скинути поля форми
             setAuthor('');
@@ -31,7 +43,7 @@ export default function LogForm() {
                     value={author}
                     onChange={(e) => setAuthor(e.target.value)}
                     required
-                    placeholder="Anonymous Admin"
+                    placeholder="Nickname"
                     className="bg-transparent border-b border-amber-500/20 focus:border-amber-500 text-amber-400 font-mono outline-none py-1 transition-all"
                 />
             </div>

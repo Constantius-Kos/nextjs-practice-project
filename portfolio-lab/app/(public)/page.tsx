@@ -1,7 +1,6 @@
 import { Suspense } from "react";
 import Terminal from "../components/lab/Terminal";
-import LogForm from "../components/lab/LogForm";
-import AccessLogs from "../components/lab/AccessLogs";
+import AccessLogsContainer from "../components/lab/AccessLogsContainer";
 interface PageProps {
   searchParams: Promise<{ view?: string }>;
 }
@@ -15,8 +14,7 @@ export default async function Home({ searchParams }: PageProps) {
 
         <section className={`${currentView !== 'logs' ? ' hidden' : ''}   flex flex-col gap-4 p-2 w-ful md:flex md:col-span-3`}>
           <Suspense>
-            <LogForm />
-            <AccessLogs />
+            <AccessLogsContainer />
           </Suspense>
         </section>
 
