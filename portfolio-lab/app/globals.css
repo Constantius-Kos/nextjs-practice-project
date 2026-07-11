@@ -85,3 +85,24 @@ body {
   background-size: 100% 9px;
 
 }
+
+/*__________анімація для появи секціі_____________*/
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    /* легкий підйом знизу вгору для ефекту */
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/*________________________________________________*/

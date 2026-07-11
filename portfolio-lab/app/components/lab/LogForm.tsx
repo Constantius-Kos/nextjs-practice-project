@@ -31,6 +31,8 @@ export default function LogForm({ addOptimisticLog }: LogFormProps) {
         });
     }
 
+    const isValid = author.trim().length >= 2 && message.trim().length >= 3
+
     return (
         <form action={handleSubmit} className="flex flex-col gap-4 p-4 border border-gold-deep/50 rounded-lg bg-black/40 backdrop-blur-md shadow-[0_0_20px_-10px_var(--gold-deep)]">
             <div className="flex flex-col gap-1">
@@ -66,7 +68,7 @@ export default function LogForm({ addOptimisticLog }: LogFormProps) {
 
             <button
                 type="submit"
-                disabled={isPending || !author || !message}
+                disabled={isPending || !isValid}
                 className="mt-2 py-2 px-4 bg-amber-600/20 enabled:hover:bg-amber-600/40 text-amber-500 font-mono text-sm border border-amber-600/50  tracking-widest transition-all enabled:active:scale-95 disabled:opacity-50 cursor-pointer disabled:cursor-not-allowed "
             >
                 {isPending ? '> Executing...' : '> Execute / Log'}

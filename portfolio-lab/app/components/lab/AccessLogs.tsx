@@ -15,20 +15,33 @@ function AccessLogs({ logs }: iProps) {
     )
 
     return (
-        <div className='flex flex-col gap-4'>
+        <div className='flex flex-col h-full overflow-hidden  gap-4 md:h-full md:overflow-hidden'>
             <LogForm addOptimisticLog={addOptimisticLog} />
-            <div className="flex flex-col gap-4 p-4 border border-amber-500/30 rounded-lg bg-black/40 backdrop-blur-md  w-full h-full shadow-[0_0_20px_-10px_var(--gold-deep)]">
+            <div className="flex flex-col flex-1 min-h-0 gap-4 p-2 border border-amber-500/30 rounded-lg bg-black/40 backdrop-blur-md  w-full shadow-[0_0_20px_-10px_var(--gold-deep)] ">
                 {/* Заголовок віджета */}
                 <h3 className=" font-mono text-amber-500 self-center">[ACCESS LOG MONITOR]</h3>
 
                 {/* Контейнер для списку - саме він буде скролитись */}
-                <ul className=" list-disc pl-5 overflow-y-auto flex-1 flex flex-col gap-3 pr-2 text-gold-amber Scrollbar-thin scrollbar-thumb-amber-500/20">
-                    {optimisticLogs.length !== 0 && optimisticLogs.map((log) => <li className="border-b border-dashed border-gold-amber" key={log.id}>
-                        <span>{log.author}:</span>
-                        <span className="ml-2">{log.message}</span></li>)}
+                <ul className="  pl-2 overflow-y-auto flex-1 flex flex-col gap-3 pr-2 text-gold-amber Scrollbar-thin scrollbar-thumb-amber-500/20   ">
+                    {optimisticLogs.length !== 0 && optimisticLogs.map((log) => <li className="flex flex-wrap border-b border-dashed border-gold-amber 
+               nth-1:opacity-100 
+               nth-2:opacity-90 
+               nth-3:opacity-80 
+               nth-4:opacity-70 
+               nth-5:opacity-60 
+               nth-6:opacity-50 
+               nth-7:opacity-40 
+               nth-[n+8]:opacity-35
+               " key={log.id}>
+                        < span  >
+                            <span className='text-[9px] mr-1'>
+                                {log.createdAt.toLocaleDateString()}
+                            </span>
+                            {log.author}:</span>
+                        <span className="ml-1">{log.message}</span></li>)}
                 </ul>
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }
 

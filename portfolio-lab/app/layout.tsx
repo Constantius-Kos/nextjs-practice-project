@@ -36,7 +36,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable}${jetBrainsMono.variable}${montserrat.variable} h-full antialiased`}
     >
 
-      <body className="min-h-full flex flex-col">
+      <body className="debug-cyan h-dvh overflow-hidden flex flex-col md:h-dvh p-2">
         <Suspense fallback={<div className="h-14 bg-black" />} >
           <MobileHeader />
         </Suspense>

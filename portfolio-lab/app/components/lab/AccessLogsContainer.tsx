@@ -14,9 +14,9 @@ async function getLogs() {
 async function AccessLogsContainer() {
     const logs = await getLogs()
     return (
-        <div>
+        <>
             <AccessLogs logs={logs} />
-        </div>
+        </>
     )
 }
 

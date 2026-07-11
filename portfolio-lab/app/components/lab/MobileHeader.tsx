@@ -66,7 +66,7 @@ function MobileHeader() {
                         </Link>
                     </nav>
                     {/* Нижня інформаційна панель */}
-                    <div className="text-center text-[10px] text-amber-500/30 uppercase tracking-tighter">
+                    <div className="text-center text-[10px] text-amber-500 uppercase tracking-tighter">
                         © 2026 Lab Portfolio v1.0.0
                     </div>
                 </div>
