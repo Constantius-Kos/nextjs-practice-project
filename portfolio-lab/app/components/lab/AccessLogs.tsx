@@ -15,14 +15,14 @@ function AccessLogs({ logs }: iProps) {
     )
 
     return (
-        <div className='flex flex-col h-full overflow-hidden  gap-4 md:h-full md:overflow-hidden'>
+        <div className='flex flex-col h-full overflow-hidden  gap-4 lg:h-full lg:overflow-hidden'>
             <LogForm addOptimisticLog={addOptimisticLog} />
             <div className="flex flex-col flex-1 min-h-0 gap-4 p-2 border border-amber-500/30 rounded-lg bg-black/40 backdrop-blur-md  w-full shadow-[0_0_20px_-10px_var(--gold-deep)] ">
                 {/* Заголовок віджета */}
                 <h3 className=" font-mono text-amber-500 self-center">[ACCESS LOG MONITOR]</h3>
 
                 {/* Контейнер для списку - саме він буде скролитись */}
-                <ul className="  pl-2 overflow-y-auto flex-1 flex flex-col gap-3 pr-2 text-gold-amber Scrollbar-thin scrollbar-thumb-amber-500/20   ">
+                <ul className="  pl-2 overflow-y-auto flex-1 flex flex-col gap-3 pr-2 text-gold-amber scrollbar-custom   ">
                     {optimisticLogs.length !== 0 && optimisticLogs.map((log) => <li className="flex flex-wrap border-b border-dashed border-gold-amber 
                nth-1:opacity-100 
                nth-2:opacity-90 

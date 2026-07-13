@@ -7,10 +7,10 @@ function MobileHeader() {
     const [isOpen, setIsOpen] = useState<boolean>(false)
 
     const searchParams = useSearchParams();
-    const currentView = searchParams.get('view') || ''; // Дефолтне значення — 'terminal'
+    const currentView = searchParams.get('view') || 'terminal'; // Дефолтне значення — 'terminal'
 
     return (
-        <header className="sticky  top-0 left-0 w-full  h-14 bg-black z-10 md:hidden">
+        <header className="sticky  top-0 left-0 w-full  h-14 bg-black z-10 lg:hidden">
             <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="flex flex-col justify-center items-center w-10 h-14 gap-1.5 z-50 cursor-pointer"

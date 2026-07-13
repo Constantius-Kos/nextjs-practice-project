@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Montserrat, JetBrains_Mono } from "next/font/google"
 import "./globals.css";
 import { Suspense } from "react";
 import MobileHeader from "./components/lab/MobileHeader";
+import Header from "./components/lab/Header";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -33,10 +34,13 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable}${jetBrainsMono.variable}${montserrat.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${jetBrainsMono.variable} ${montserrat.variable} h-full antialiased`}
     >
 
-      <body className="debug-cyan h-dvh overflow-hidden flex flex-col md:h-dvh p-2">
+      <body className="debug-cyan h-dvh overflow-hidden flex flex-col lg:h-dvh p-2">
+        <Suspense fallback={<div className="h-16 bg-black"></div>}>
+          <Header />
+        </Suspense>
         <Suspense fallback={<div className="h-14 bg-black" />} >
           <MobileHeader />
         </Suspense>

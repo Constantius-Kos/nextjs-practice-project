@@ -27,13 +27,13 @@ async function Terminal() {
                 <div className="border border-dashed border-amber-50 w-12" /> {/* для балансу центрування */}
             </div>
             {/* 3. Область виводу тексту */}
-            <div className="relative flex-1 min-h-0 md:flex-1 md:min-h-0">
+            <div className="relative flex-1 min-h-0 md:flex-1 md:min-h-0 ">
 
                 {/* CRT Скло (лінії): нерухоме, зафіксоване на 100% висоти та ширини батька */}
                 <div className="absolute inset-0 pointer-events-none scan-lines z-20" />
 
                 {/* Внутрішній скрол-контейнер: саме тут знаходиться текст і скрол */}
-                <div className="h-full overflow-y-auto p-6 font-jetBrains-mono text-sm sm:text-base">
+                <div className="h-full overflow-y-auto scrollbar-custom p-3 font-jetBrains-mono text-sm sm:text-base lg:p-6">
                     <TypewriterEffect lines={allLines} />
                 </div>
             </div>
