@@ -5,8 +5,7 @@ import { Suspense } from "react";
 import MobileHeader from "./components/lab/MobileHeader";
 import Header from "./components/lab/Header";
 import PulseDashboard from "./components/lab/PulseDashboard";
-import { auth } from '@/app/lib/auth'
-import LoginButton from "./components/lab/LoginButton";
+import LoginButtonContainer from "./components/lab/LoginButtonContainer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,7 +34,6 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await auth()
 
   return (
     <html
@@ -48,7 +46,7 @@ export default async function RootLayout({
           <Header />
         </Suspense>
         <Suspense fallback={<div className="h-14 bg-black" />} >
-          <MobileHeader statusSlot={<PulseDashboard />} loginSlot={<LoginButton session={session} />} />
+          <MobileHeader statusSlot={<PulseDashboard />} loginSlot={<LoginButtonContainer />} />
         </Suspense>
         <Suspense fallback={<div className="flex-1 flex items-center justify-center text-amber-500 font-mono">Loading laboratory console...</div>}>
           {children}
