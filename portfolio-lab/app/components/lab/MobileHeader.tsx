@@ -1,8 +1,15 @@
+// Клієнтський компонент з отриманням серверного компонента PulseDashboard пропсом  як слота statusSlot
 'use client'
 import { useState } from "react"
 import Link from "next/link"
 import { useSearchParams } from 'next/navigation';
-function MobileHeader() {
+
+interface IMobileHeader {
+    statusSlot: React.ReactNode
+    loginSlot: React.ReactNode
+}
+
+function MobileHeader({ statusSlot, loginSlot }: IMobileHeader) {
 
     const [isOpen, setIsOpen] = useState<boolean>(false)
 
@@ -10,10 +17,10 @@ function MobileHeader() {
     const currentView = searchParams.get('view') || 'terminal'; // Дефолтне значення — 'terminal'
 
     return (
-        <header className="sticky  top-0 left-0 w-full  h-14 bg-black z-10 lg:hidden">
+        <header className="sticky grid grid-cols-3  top-0 left-0 w-full  h-14 bg-black z-10 lg:hidden">
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="flex flex-col justify-center items-center w-10 h-14 gap-1.5 z-50 cursor-pointer"
+                className="debug-red flex flex-col justify-center items-center w-10 h-14 gap-1.5 z-50 cursor-pointer"
                 aria-label="Toggle Menu"
             >
                 {/* Верхня смужка */}
@@ -32,6 +39,14 @@ function MobileHeader() {
                     : ''
                     }`} />
             </button>
+            <div className="debug-red  h-full flex items-center justify-center ">
+
+                {statusSlot}
+            </div>
+            <div className="debug-red  h-full flex items-center self-end justify-end">
+                {loginSlot}
+            </div>
+
             {isOpen && (
                 <div className="fixed inset-0 top-14 left-0 w-full h-[calc(100vh-3.5rem)] bg-black/95 backdrop-blur-md z-40 flex flex-col justify-between p-8 font-mono border-t border-amber-500/20">
 
