@@ -17,10 +17,10 @@ function MobileHeader({ statusSlot, loginSlot }: IMobileHeader) {
     const currentView = searchParams.get('view') || 'terminal'; // Дефолтне значення — 'terminal'
 
     return (
-        <header className="sticky grid grid-cols-3  top-0 left-0 w-full  h-14 bg-black z-10 lg:hidden">
+        <header className=" sticky grid grid-cols-[3rem_1fr_7rem] top-0 left-0 w-full  h-14  z-10 lg:hidden">
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="debug-red flex flex-col justify-center items-center w-10 h-14 gap-1.5 z-50 cursor-pointer"
+                className=" flex flex-col justify-center items-center h-14 gap-1.5 z-50 cursor-pointer"
                 aria-label="Toggle Menu"
             >
                 {/* Верхня смужка */}
@@ -39,19 +39,20 @@ function MobileHeader({ statusSlot, loginSlot }: IMobileHeader) {
                     : ''
                     }`} />
             </button>
-            <div className="debug-red  h-full flex items-center justify-center ">
+            <div className=" h-full flex items-center overflow-hidden ">
 
                 {statusSlot}
             </div>
-            <div className="debug-red  h-full flex items-center self-end justify-end">
+            <div className=" h-full flex items-center self-end justify-end">
                 {loginSlot}
             </div>
 
             {isOpen && (
-                <div className="fixed inset-0 top-14 left-0 w-full h-[calc(100vh-3.5rem)] bg-black/95 backdrop-blur-md z-40 flex flex-col justify-between p-8 font-mono border-t border-amber-500/20">
+                <div className="fixed  top-14 left-2 right-2  h-[calc(100vh-4rem)] bg-black/50 backdrop-blur-md z-40 flex flex-col justify-between p-8 rounded-3xl font-mono border border-amber-500/40 ">
+
 
                     {/* Верхня інформаційна панель */}
-                    <div className="text-xs text-amber-500/50 flex justify-between uppercase tracking-widest">
+                    <div className="text-[10px] text-amber-500/80 flex justify-between uppercase tracking-widest">
                         <span>[System: Online]</span>
                         <span>[Security: Level-1]</span>
                     </div>

@@ -15,9 +15,9 @@ function AccessLogs({ logs }: iProps) {
     )
 
     return (
-        <div className='flex flex-col h-full overflow-hidden  gap-4 lg:h-full lg:overflow-hidden'>
+        <div className=' flex flex-col h-full w-full p-2  overflow-hidden  gap-4 lg:h-full lg:overflow-hidden'>
             <LogForm addOptimisticLog={addOptimisticLog} />
-            <div className="flex flex-col flex-1 min-h-0 gap-4 p-2 border border-amber-500/30 rounded-lg bg-black/40 backdrop-blur-md  w-full shadow-[0_0_20px_-10px_var(--gold-deep)] ">
+            <div className="flex flex-col flex-1 min-h-0 gap-4 p-2 border  border-amber-500/30 rounded-lg bg-black/40 backdrop-blur-md  w-full shadow-[0_0_10px_-5px_var(--gold-deep)]  lg:shadow-[0_0_12px_-5px_var(--gold-deep)]    ">
                 {/* Заголовок віджета */}
                 <h3 className=" font-mono text-amber-500 self-center">[ACCESS LOG MONITOR]</h3>
 

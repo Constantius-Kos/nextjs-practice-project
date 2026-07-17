@@ -3,9 +3,11 @@ import { useState } from "react"
 import { loginWithGithub, loginWithGoogle, logout } from "@/app/lib/actions"
 import type { Session } from "next-auth"
 import Image from "next/image"
+
 interface LoginButtonProps {
     session: Session | null
 }
+
 function LoginButton({ session }: LoginButtonProps) {
     const [isOpenLoginModal, setIsopenLoginModal] = useState<boolean>(false)
     function clickHandler() {
@@ -15,18 +17,18 @@ function LoginButton({ session }: LoginButtonProps) {
             setIsopenLoginModal(true)
         }
     }
-    console.log(session);
+    // console.log(session);
     return (
         <>
             {/* Ататарка + емейл на десктопе */}
-            {session && <div className="  hidden lg:flex  " >
+            {session && <div className=" flex    " >
                 {session?.user?.image && <Image src={session.user.image} width={24} height={24} alt={'avatar'} className="rounded-full mr-2" />}
-                <div className="pr-2 ">{session.user.email}</div>
+                <div className="pr-2 hidden lg:flex ">{session.user.email}</div>
             </div>}
             {/* Тільки аватарка на мобільному */}
-            {session?.user.image && <Image src={session.user.image} width={24} height={24} alt={'avatar'} className="rounded-full lg:hidden mr-2" />}
+            {/* {session?.user.image && <Image src={session.user.image} width={24} height={24} alt={'avatar'} className="debug-purple rounded-full lg:hidden mr-2" />} */}
 
-            <button className="debug-purple" onClick={() => clickHandler()}>{session ? 'Log Out' : 'Login'}</button>
+            <button className="" onClick={() => clickHandler()}>{session ? 'Log Out' : 'Login'}</button>
             {/* Модалка з варіантами логіну */}
             {isOpenLoginModal && <div className="fixed z-50 inset-0  flex justify-center items-center bg-black/70" onClick={() => setIsopenLoginModal(!isOpenLoginModal)}>
                 <div className="border border-gold-amber/70 shadow-[0_0_30px_-10px_var(--gold-deep)] rounded-lg flex flex-col w-[90dvw] h-[90dvw] lg:h-80 lg:w-100 items-center justify-center gap-10 bg-black/90 backdrop-blur-md font-jetBrains-mono" onClick={(e) => e.stopPropagation()}>

@@ -49,10 +49,18 @@ model Session {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+// 1. Оголошуємо сам enum для статусу
+enum StatusIndicator {
+  ONLINE
+  BUSY
+  OFFLINE
+}
+
 model Status {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        String          @id @default(auto()) @map("_id") @db.ObjectId
   text      String
-  updatedAt DateTime @updatedAt
+  indicator StatusIndicator @default(ONLINE)
+  updatedAt DateTime        @updatedAt
 }
 
 model Log {

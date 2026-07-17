@@ -5,7 +5,7 @@ import type { NextRequest } from "next/server";
 export function proxy(req: NextRequest) {
     const isUser = req.cookies.get('authjs.session-token')
     const vercelHeader = req.cookies.get('__Secure-authjs.session-token')
-    console.log(isUser)
+    // console.log(isUser)
     const sessionToken = isUser || vercelHeader
     if (!sessionToken) {
         return NextResponse.redirect(new URL('/', req.nextUrl))
@@ -15,7 +15,7 @@ export function proxy(req: NextRequest) {
     if (userAgent?.toLowerCase().includes('bot')) {
         return NextResponse.redirect(new URL(`/contacts`, req.nextUrl))
     }
-    console.log(userAgent)
+    // console.log(userAgent)
     return NextResponse.next()
 
 

@@ -15,7 +15,7 @@ export default function LogForm({ addOptimisticLog }: LogFormProps) {
     const [isPending, startTransition] = useTransition();
 
     async function handleSubmit(formData: FormData) {
-        console.log("Form data capture:", Object.fromEntries(formData));
+        // console.log("Form data capture:", Object.fromEntries(formData));
         startTransition(async () => {
             const tempLog: Log = {
                 id: Math.random().toString(), // тимчасовий випадковий ID
@@ -34,7 +34,7 @@ export default function LogForm({ addOptimisticLog }: LogFormProps) {
     const isValid = author.trim().length >= 2 && message.trim().length >= 3
 
     return (
-        <form action={handleSubmit} className="flex flex-col gap-4 p-4 border border-gold-deep/50 rounded-lg bg-black/40 backdrop-blur-md shadow-[0_0_20px_-10px_var(--gold-deep)]">
+        <form action={handleSubmit} className="flex flex-col gap-4 p-4 border border-gold-deep/50 rounded-lg bg-black/40 backdrop-blur-md shadow-[0_0_10px_-5px_var(--gold-deep)] lg:shadow-[0_0_12px_-5px_var(--gold-deep)] ">
             <div className="flex flex-col gap-1">
                 <label htmlFor="author" className="text-xs uppercase tracking-tighter text-amber-500 font-mono">
                     [Identify Your Identity]

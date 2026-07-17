@@ -147,3 +147,21 @@ body {
 }
 
 /*________________________________________________*/
+
+@keyframes marquee-single {
+  0% {
+    transform: translateX(100%);
+    /* Текст схований повністю праворуч */
+  }
+
+  100% {
+    transform: translateX(-100%);
+    /* Текст іде повністю за ліву межу */
+  }
+}
+
+.animate-marquee-single {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee-single 10s linear infinite;
+}

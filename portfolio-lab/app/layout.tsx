@@ -41,7 +41,7 @@ export default async function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${jetBrainsMono.variable} ${montserrat.variable} h-full antialiased`}
     >
 
-      <body className="debug-cyan h-dvh overflow-hidden flex flex-col lg:h-dvh p-2">
+      <body className=" h-dvh overflow-hidden flex flex-col lg:h-dvh p-1">
         <Suspense fallback={<div className="h-16 bg-black"></div>}>
           <Header />
         </Suspense>
