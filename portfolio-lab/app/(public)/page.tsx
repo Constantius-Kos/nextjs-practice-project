@@ -18,7 +18,7 @@ export default async function Home({ searchParams }: PageProps) {
         </Suspense>
       </section>
 
-      <section className={`${currentView !== 'terminal' ? ' hidden' : ''}  animate-fade-in h-[60dvh] overflow-hidden p-2  lg:flex  lg:col-span-9 lg:h-[30dvh]`}>
+      <section className={`${currentView !== 'terminal' ? ' hidden' : ''} debug-cyan  animate-fade-in h-[60dvh] overflow-hidden p-2  lg:flex  lg:col-span-9 lg:h-[60dvh]`}>
         <Suspense fallback={<div>Loading Terminal...</div>}>
           <Terminal />
         </Suspense>
