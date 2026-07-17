@@ -14,7 +14,7 @@ async function Terminal() {
     // console.log('Terminal.tsx:', commits, '***Terminal.tsx***');
     return (
         // 1. Головна "коробка" з рамкою та розмиттям фону
-        <div className="p-2 w-full  rounded-lg border border-gold-deep/50 bg-[#0a0a0a]/80 backdrop-blur-md shadow-[0_0_12px_-5px_var(--gold-deep)] flex flex-col h-full overflow-hidden ">5
+        <div className="p-2 w-full  rounded-lg border border-gold-deep/50 bg-[#0a0a0a]/80 backdrop-blur-md shadow-[0_0_12px_-5px_var(--gold-deep)] flex flex-col h-full overflow-hidden ">
 
             {/* 2. Шапка терміналу */}
             <div className="bg-white/5 px-4 py-2 flex items-center justify-between border-b border-white/5 rounded-t-md">
