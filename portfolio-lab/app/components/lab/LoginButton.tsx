@@ -21,14 +21,14 @@ function LoginButton({ session }: LoginButtonProps) {
     return (
         <>
             {/* Ататарка + емейл на десктопе */}
-            {session && <div className=" flex    " >
+            {session && <div className=" flex font-jetBrains-mono text-sm items-center text-gold-amber/80" >
                 {session?.user?.image && <Image src={session.user.image} width={24} height={24} alt={'avatar'} className="rounded-full mr-2" />}
                 <div className="pr-2 hidden lg:flex ">{session.user.email}</div>
             </div>}
             {/* Тільки аватарка на мобільному */}
             {/* {session?.user.image && <Image src={session.user.image} width={24} height={24} alt={'avatar'} className="debug-purple rounded-full lg:hidden mr-2" />} */}
 
-            <button className="" onClick={() => clickHandler()}>{session ? 'Log Out' : 'Login'}</button>
+            <button className="rounded-full px-2 py-1 text-xs border border-amber-500 bg-zinc-950/40 backdrop-blur-md  font-jetBrains-mono text-amber-500/80 hover:cursor-pointer" onClick={() => clickHandler()}>{session ? 'Log Out' : 'Login'}</button>
             {/* Модалка з варіантами логіну */}
             {isOpenLoginModal && <div className="fixed z-50 inset-0  flex justify-center items-center bg-black/70" onClick={() => setIsopenLoginModal(!isOpenLoginModal)}>
                 <div className="border border-gold-amber/70 shadow-[0_0_30px_-10px_var(--gold-deep)] rounded-lg flex flex-col w-[90dvw] h-[90dvw] lg:h-80 lg:w-100 items-center justify-center gap-10 bg-black/90 backdrop-blur-md font-jetBrains-mono" onClick={(e) => e.stopPropagation()}>

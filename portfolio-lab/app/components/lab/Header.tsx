@@ -15,7 +15,7 @@ async function Header() {
                 <PulseDashboard />
             </div>
 
-            <div className="debug-red flex h-full items-center justify-end pr-10 ">
+            <div className="debug-red flex h-full items-center justify-end pr-1 ">
                 <LoginButtonContainer />
             </div>
         </div>

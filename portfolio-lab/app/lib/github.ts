@@ -5,7 +5,7 @@ export async function getLatestComits(): Promise<GitHubCommit[]> {
     'use cache'
     cacheTag('commits')
     cacheLife('commits')
-    const res = await fetch('https://api.github.com/repos/Constantius-Kos/nextjs-practice-project/commits?per_page=5')
+    const res = await fetch('https://api.github.com/repos/Constantius-Kos/nextjs-practice-project/commits?per_page=10')
     if (!res.ok) {
         throw new Error('Помилка обробки запроса що до масиву комітів')
     }

@@ -5,7 +5,7 @@ async function LoginButtonContainer() {
     const session = await auth()
 
     return (
-        <div className="w-full h-full items-center justify-end  flex ">
+        <div className="debug-cyan w-full flex flex-1 h-full items-center justify-end   ">
             <LoginButton session={session} />
         </div>
     )
