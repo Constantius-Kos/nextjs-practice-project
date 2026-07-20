@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Montserrat, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { Suspense } from "react";
 import MobileHeader from "./components/lab/MobileHeader";
 import Header from "./components/lab/Header";
+import { Suspense } from "react";
 import PulseDashboard from "./components/lab/PulseDashboard";
 import LoginButtonContainer from "./components/lab/LoginButtonContainer";
 
@@ -40,17 +40,12 @@ export default async function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${jetBrainsMono.variable} ${montserrat.variable} h-full antialiased`}
     >
-
       <body className=" h-dvh overflow-hidden flex flex-col lg:h-dvh p-1">
-        <Suspense fallback={<div className="h-16 bg-black"></div>}>
+        <Suspense fallback={<div>Loading...</div>}>
           <Header />
-        </Suspense>
-        <Suspense fallback={<div className="h-14 bg-black" />} >
           <MobileHeader statusSlot={<PulseDashboard />} loginSlot={<LoginButtonContainer />} />
         </Suspense>
-        <Suspense fallback={<div className="flex-1 flex items-center justify-center text-amber-500 font-mono">Loading laboratory console...</div>}>
-          {children}
-        </Suspense>
+        {children}
       </body>
 
     </html>

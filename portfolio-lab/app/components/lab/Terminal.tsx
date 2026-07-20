@@ -1,7 +1,11 @@
 import { getLatestComits } from "@/app/lib/github"
 import TypewriterEffect from "./TypewritterEffect";
+import { auth } from "@/app/lib/auth";
+import Link from "next/link";
 async function Terminal() {
     const commits = await getLatestComits()
+    const session = await auth()
+    const isAdmin = session?.user?.role === 'admin'
     const commitLines = commits.map(c => ({
         text: `${new Date(c.commit.author.date).toLocaleDateString('uk-UA')}: ${c.commit.message}`,
         className: "text-gold-amber"
@@ -19,7 +23,7 @@ async function Terminal() {
             {/* 2. Шапка терміналу */}
             <div className="bg-white/5 px-4 py-2 flex items-center justify-between border-b border-white/5 rounded-t-md">
                 <div className="flex gap-2">
-                    <div className="w-3 h-3 rounded-full bg-red-500/50" />
+                    {isAdmin ? <Link href='/admin' className="w-3 h-3 rounded-full bg-red-500 shadow-[0_0_12px_rgba(239,68,68,0.8)] hover:bg-purple-500 hover:scale-110 animate-pulse transition-all duration-300 hover:shadow-[0_0_12px_rgba(168,85,247,0.8)] cursor-pointer"></Link> : <div className="w-3 h-3 rounded-full bg-red-500/50" />}
                     <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
                     <div className="w-3 h-3 rounded-full bg-green-500/50" />
                 </div>

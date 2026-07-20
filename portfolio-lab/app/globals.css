@@ -37,6 +37,11 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+@utility text-glow {
+  text-shadow: 0 0 4px var(--color-gold-amber);
+
+}
+
 /* Custom Debug Utility */
 @utility debug {
   @apply border-2 border-dashed border-amber-50;
@@ -66,10 +71,36 @@ body {
   @apply border-2 border-dashed border-gold-amber;
 }
 
-@utility text-glow {
-  text-shadow: 0 0 4px var(--color-gold-amber);
 
+@utility debug-1 {
+  @apply border-1 border-dashed border-amber-50;
 }
+
+@utility debug-red-1 {
+  @apply border-1 border-dashed border-red-600;
+}
+
+@utility debug-green-1 {
+  @apply border-1 border-dashed border-green-600;
+}
+
+@utility debug-blue-1 {
+  @apply border-1 border-dashed border-blue-500;
+}
+
+@utility debug-purple-1 {
+  @apply border-1 border-dashed border-purple-500;
+}
+
+@utility debug-cyan-1 {
+  @apply border-1 border-dashed border-cyan-400;
+}
+
+@utility debug-gold-1 {
+  @apply border-1 border-dashed border-gold-amber;
+}
+
+
 
 @utility scan-lines {
   background: linear-gradient(to bottom,
