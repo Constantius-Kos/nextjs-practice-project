@@ -197,3 +197,14 @@ body {
   white-space: nowrap;
   animation: marquee-single 10s linear infinite;
 }
+
+/* Overwrite browser autofill styles for input fields to match dark theme */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #000000 inset !important;
+  -webkit-text-fill-color: #F59E0B !important;
+  caret-color: #F59E0B;
+  transition: background-color 5000s ease-in-out 0s;
+}
