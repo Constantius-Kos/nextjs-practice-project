@@ -95,8 +95,9 @@
 - [ ] **5.3. Exit Console Link:** Додати кнопку повернення `[EXIT_TO_MAIN]` (Link на `/`) для виходу з консолі.
 
 ### Layer 2: Telemetry Control (Панель Статусу)
-- [ ] **5.4. Status Action:** Створити Server Action для запису оновленого статусу в БД з викликом `revalidateTag('status')`.
-- [ ] **5.5. Status Switcher Form:** Створити форму `components/admin/StatusForm.tsx` (клієнтська форма з круглими LED-радіокнопками та полем для коментаря).
+- [x] **5.4. Status Action:** Створити Server Action для запису оновленого статусу в БД з викликом `updateTag('status')`.
+- [x] **5.5. Status Switcher Form:** Створити форму `components/admin/StatusForm.tsx` (клієнтська форма керування статусом).
+- [ ] **5.6. Suspense Fix (Build Error):** Огорнути логіку використання динамічних `searchParams` на сторінці адмінки (`page.tsx`) у дочірній компонент та `<Suspense>`.
 
 ### Layer 3: Moderation (Модерація логів)
 - [ ] **5.6. Purge Action:** Створити Server Action `deleteLogAction` для видалення запису з гостьової книги за ID з ревалідацією шляху `revalidatePath('/')`.

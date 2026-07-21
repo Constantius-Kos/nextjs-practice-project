@@ -12,7 +12,7 @@ export default async function Home({ searchParams }: PageProps) {
 
     <main className=' p-1 flex  flex-col flex-1 h-[calc(100dvh-3.5rem)] overflow-auto    w-full   lg:overflow-hidden lg:grid lg:grid-cols-12 lg:gap-4'>
 
-      <section className={`${currentView !== 'logs' ? ' hidden' : ''}  animate-fade-in  flex flex-col h-full gap-4 p-2 w-ful lg:flex lg:col-span-3 lg:h-full lg:min-h-0`}>
+      <section className={` ${currentView !== 'logs' ? ' hidden' : ''}  animate-fade-in  flex flex-col h-full gap-4 p-2 w-ful lg:flex lg:col-span-3 lg:h-full lg:min-h-0 lg:overflow-scroll scrollbar-none`}>
         <Suspense>
           <AccessLogsContainer />
         </Suspense>

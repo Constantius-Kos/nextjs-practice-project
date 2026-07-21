@@ -40,7 +40,7 @@ export default async function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${jetBrainsMono.variable} ${montserrat.variable} h-full antialiased`}
     >
-      <body className=" h-dvh overflow-hidden flex flex-col lg:h-dvh p-1">
+      <body className=" h-dvh  flex flex-col lg:h-dvh p-1">
         <Suspense fallback={<div>Loading...</div>}>
           <Header />
           <MobileHeader statusSlot={<PulseDashboard />} loginSlot={<LoginButtonContainer />} />

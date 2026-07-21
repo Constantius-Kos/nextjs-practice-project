@@ -24,7 +24,7 @@ async function PulseDashboard() {
     const isLongText = statusText.length > 10;
 
     return (
-        <div className={`flex items-center w-full gap-2.5 px-3.5 py-1.5 rounded-full border border-amber-500 bg-zinc-950/40 backdrop-blur-md  font-mono text-amber-500/80 transition-all duration-500  ${config.glowClass} lg:max-w-1/2  `}>
+        <div className={`flex items-center w-full gap-2.5 px-3.5 py-1.5 rounded-full border border-amber-500 bg-zinc-950/40 backdrop-blur-md  font-mono  transition-all duration-500  ${config.glowClass} lg:max-w-1/2  `}>
 
             {/* Контейнер для LED-маячка */}
             <span className="relative flex h-2 w-2">
@@ -42,13 +42,13 @@ async function PulseDashboard() {
             </span>
 
             {/* Текстова мітка статусу з бази даних */}
-            <span className="tracking-wide uppercase text-[10px] lg:text-xs text-amber-500/80 mr-1 border-r border-amber-500/20 pr-2">
+            <span className="tracking-wide uppercase text-[10px] lg:text-xs  mr-1 border-r border-amber-500/20 pr-2">
                 {config.label}
             </span>
             {/* 1. Обгортка, яка ховає текст, що виходить за межі */}
             <div className={`flex-1 overflow-hidden min-w-0 flex ${isLongText ? "justify-start lg:justify-center" : "justify-center"}`}>
 
-                <span className={`inline-block whitespace-nowrap text-amber-500/80 font-sans tracking-normal select-none text-xs lg:text-sm ${isLongText ? "animate-marquee-single" : ""
+                <span className={`inline-block whitespace-nowrap  font-sans tracking-normal select-none text-xs lg:text-sm ${isLongText ? "animate-marquee-single" : ""
                     }`}>
                     {statusText}
                 </span>

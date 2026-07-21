@@ -1,22 +1,21 @@
+import type { searchParamsType } from "@/types/serachParamsType"
 import SideBar from "./components/SideBar"
-import StatusForm from "./components/StatusForm"
-import { auth } from "@/app/lib/auth"
-interface Iprops {
-    searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+import AdminContent from "./components/AdminContent"
+
+import { Suspense } from "react"
+
+interface IAdmiPageProps {
+    searchParams: searchParamsType
 }
-
-
-async function AdminPage({ searchParams }: Iprops) {
-    const { tab } = await searchParams
+function AdminPage({ searchParams }: IAdmiPageProps) {
 
 
     return (
         <div className="debug-red flex flex-col lg:flex-row flex-1 p-3 gap-2 ">
             <SideBar />
-            <div className="debug-purple flex items-center justify-center flex-1">
-
-                {tab === 'status' && <StatusForm />}
-            </div>
+            <Suspense fallback={<div className="debug-purple flex items-center justify-center flex-1 ">Loading content...</div>}>
+                <AdminContent searchParams={searchParams} />
+            </Suspense>
         </div>
     )
 }

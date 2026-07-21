@@ -43,7 +43,7 @@ function TypewriterEffect({ lines, speed = 50 }: TypewriterEffectProps) {
     }, [currentText, currentLineIndex, lines, speed])
 
     return (
-        <div className="space-y-1 text-gold-amber   ">
+        <div className="space-y-1   ">
             {/* 1. Рядки, які вже надруковані повністю */}
             {visibleLines.map((line, i) => (
                 <TerminalRow key={i} text={line.text} prefix={line.prefix} className={line.className} />

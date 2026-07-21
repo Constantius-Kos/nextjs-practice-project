@@ -1,0 +1,1 @@
+export type searchParamsType = Promise<{ [key: string]: string | string[] | undefined }>
