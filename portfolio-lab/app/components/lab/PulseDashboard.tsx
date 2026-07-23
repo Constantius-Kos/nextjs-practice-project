@@ -15,6 +15,7 @@ async function PulseDashboard() {
     // Якщо у базі є кастомний текст (наприклад, "Коджу портфоліо"), беремо його.
     // Якщо в базі порожньо, використовуємо назву статусу з конфігу (наприклад, "OFFLINE").
     const statusText = status?.text || config.label
+    const date = status?.updatedAt.toLocaleDateString()
     console.log(status);
     // return (
     //     <div className="debug-purple ">
@@ -50,12 +51,14 @@ async function PulseDashboard() {
 
                 <span className={`inline-block whitespace-nowrap  font-sans tracking-normal select-none text-xs lg:text-sm ${isLongText ? "animate-marquee-single" : ""
                     }`}>
+                    <span className="text-[9px] mr-1">{date}:</span>
                     {statusText}
                 </span>
             </div>
         </div>
     );
-
 }
+
+
 
 export default PulseDashboard
