@@ -11,9 +11,9 @@ function AdminPage({ searchParams }: IAdmiPageProps) {
 
 
     return (
-        <div className="debug-red flex flex-col lg:flex-row flex-1 p-3 gap-2 ">
+        <div className="flex flex-col lg:flex-row flex-1 p-3 gap-2 ">
             <SideBar />
-            <Suspense fallback={<div className="debug-purple flex items-center justify-center flex-1 ">Loading content...</div>}>
+            <Suspense fallback={<div className=" flex items-center justify-center flex-1 ">Loading content...</div>}>
                 <AdminContent searchParams={searchParams} />
             </Suspense>
         </div>

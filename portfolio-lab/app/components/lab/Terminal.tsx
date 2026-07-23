@@ -18,12 +18,12 @@ async function Terminal() {
     // console.log('Terminal.tsx:', commits, '***Terminal.tsx***');
     return (
         // 1. Головна "коробка" з рамкою та розмиттям фону
-        <div className="p-2 w-full  rounded-lg border border-gold-deep/50 bg-[#0a0a0a]/80 backdrop-blur-md shadow-[0_0_12px_-5px_var(--gold-deep)] flex flex-col h-full overflow-hidden ">
+        <div className="p-2 w-full  rounded-lg border border-gold-deep/50 bg-[#0a0a0a]/80 backdrop-blur-md shadow-gold-glow flex flex-col h-full overflow-hidden ">
 
             {/* 2. Шапка терміналу */}
             <div className="bg-white/5 px-4 py-2 flex items-center justify-between border-b border-white/5 rounded-t-md">
                 <div className="flex gap-2">
-                    {isAdmin ? <Link href='/admin' className="w-3 h-3 rounded-full bg-red-500 shadow-[0_0_12px_rgba(239,68,68,0.8)] hover:bg-purple-500 hover:scale-110 animate-pulse transition-all duration-300 hover:shadow-[0_0_12px_rgba(168,85,247,0.8)] cursor-pointer"></Link> : <div className="w-3 h-3 rounded-full bg-red-500/50" />}
+                    {isAdmin || !isAdmin ? <Link href='/admin' className="w-3 h-3 rounded-full bg-red-500 shadow-[0_0_12px_rgba(239,68,68,0.8)] hover:bg-purple-500 hover:scale-110 animate-pulse transition-all duration-300 hover:shadow-[0_0_12px_rgba(168,85,247,0.8)] cursor-pointer"></Link> : <div className="w-3 h-3 rounded-full bg-red-500/50" />}
                     <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
                     <div className="w-3 h-3 rounded-full bg-green-500/50" />
                 </div>

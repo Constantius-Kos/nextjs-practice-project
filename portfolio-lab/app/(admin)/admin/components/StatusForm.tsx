@@ -1,17 +1,21 @@
 'use client';
 import { useState } from "react";
 import { updateStatus } from "../actions";
+import { Session } from "next-auth";
 
-
+interface Props {
+    session: Session | null
+}
 // Доступні статуси
 const STATUS_OPTIONS = ["ONLINE", "BUSY", "OFFLINE"] as const;
-function StatusForm() {
+function StatusForm({ session }: Props) {
     const [isOpen, setIsOpen] = useState(false);
     const [selectedIndicator, setSelectedIndicator] = useState<typeof STATUS_OPTIONS[number]>("ONLINE");
-
+    const isDisabled = session?.user?.role !== 'admin'
+    console.log(session);
 
     return (
-        <div className="debug-green w-80 h-80 p-2">
+        <div className="border border-gold-amber/30 rounded-xl w-80 h-80 p-4 bg-gold-custom  shadow-gold-glow m-auto ">
             <form action={updateStatus} className=" flex flex-col gap-4">
 
                 {/* 1. Поле для введення коментаря */}
@@ -61,7 +65,7 @@ function StatusForm() {
                         </div>
                     )}
                 </div>
-                <button type="submit" className="rounded-full px-2 py-1 text-xs w-fit self-center lg:w-fit lg:px-4 text-center border border-amber-500  font-jetBrains-mono text-amber-500/80 hover:cursor-pointer ">хуяк</button>
+                <button className="rounded-full px-3 py-1 text-xs w-fit self-center lg:w-fit lg:px-4 text-center border border-amber-500  font-jetBrains-mono text-amber-500/80 hover:cursor-pointer disabled:border-gray-400/50 disabled:text-gray-400/50  disabled:cursor-not-allowed" type="submit" disabled={isDisabled}>Update</button>
             </form>
         </div>
     );

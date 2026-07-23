@@ -1,12 +1,12 @@
 import getLogs from "@/app/lib/data/getLogs"
-
+import { auth } from "@/app/lib/auth";
+import AccessLogTable from "./AccessLogTable";
 async function AccessLogModerator() {
-
+    const session = await auth()
     const logs = await getLogs() || []
+    console.log('AccessLogModerator: logs:', logs);
     return (
-        <div className="debug-1 w-full h-full">
-
-        </div>
+        <AccessLogTable logs={logs} session={session} />
     )
 }
 

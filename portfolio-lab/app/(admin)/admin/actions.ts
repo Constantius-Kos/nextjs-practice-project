@@ -1,6 +1,7 @@
 'use server'
 import { db } from "@/app/lib/prisma";
-import { revalidatePath, updateTag } from "next/cache";
+import { updateTag } from "next/cache";
+import type { Log } from "@prisma/client";
 
 export async function updateStatus(formData: FormData): Promise<void> {
     const indicatorValue = formData.get('indicator') as 'ONLINE' | 'BUSY' | 'OFFLINE'
@@ -16,3 +17,19 @@ export async function updateStatus(formData: FormData): Promise<void> {
     // revalidatePath('/')
     updateTag('status')
 }
+
+export async function deleteLog(logId: Log['id']): Promise<{ success: boolean }> {
+    try {
+        await db.log.delete({
+            where: { id: logId }
+        });
+        updateTag('logs')
+        console.log('deleteLog: лог видалений');
+        return { success: true };
+    } catch (error) {
+        console.error("Error deleting log:", error);
+        return { success: false };
+    }
+
+}
+

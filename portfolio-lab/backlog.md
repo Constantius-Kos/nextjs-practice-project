@@ -97,11 +97,12 @@
 ### Layer 2: Telemetry Control (Панель Статусу)
 - [x] **5.4. Status Action:** Створити Server Action для запису оновленого статусу в БД з викликом `updateTag('status')`.
 - [x] **5.5. Status Switcher Form:** Створити форму `components/admin/StatusForm.tsx` (клієнтська форма керування статусом).
-- [ ] **5.6. Suspense Fix (Build Error):** Огорнути логіку використання динамічних `searchParams` на сторінці адмінки (`page.tsx`) у дочірній компонент та `<Suspense>`.
+- [x] **5.6. Suspense Fix (Build Error):** Огорнути логіку використання динамічних `searchParams` на сторінці адмінки (`page.tsx`) у дочірній компонент та `<Suspense>`.
 
 ### Layer 3: Moderation (Модерація логів)
-- [ ] **5.6. Purge Action:** Створити Server Action `deleteLogAction` для видалення запису з гостьової книги за ID з ревалідацією шляху `revalidatePath('/')`.
-- [ ] **5.7. Log Moderation UI:** Створити таблицю/список логів `components/admin/LogModerator.tsx` з кнопками швидкої модерації `[PURGE]`.
+- [x] **5.6. Purge Action:** Створити Server Action `deleteLog` для видалення запису з гостьової книги за ID з оновленням кешу через `updateTag('logs')`.
+- [ ] **5.7. Log Moderation UI:** Створити компонент `AccessLogModerator.tsx` з Cyber Grid таблицею (4 колонки) та кнопками швидкої модерації `[DELETE]`. *(В процесі розробки: закладено структуру CSS Grid, `Fragment key={log.id}`, розліновку та шрифти)*.
+
 
 ---
 

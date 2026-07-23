@@ -27,7 +27,11 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
   --font-monserrat: var(--font-monserrat);
-  --font-jetBrains-mono: var(--font-jetBrains-mono)
+  --font-jetBrains-mono: var(--font-jetBrains-mono);
+
+  --shadow-gold-glow: 0 0 12px -5px var(--gold-deep);
+
+  --bg-gold-custom: bg-gold-amber/5
 }
 
 
@@ -178,7 +182,7 @@ body {
   cursor: pointer;
 }
 
-/*________________________________________________*/
+/*__________________Бігуча_строка_статусу________________*/
 
 @keyframes marquee-single {
   0% {
@@ -207,4 +211,10 @@ input:-webkit-autofill:active {
   -webkit-text-fill-color: #F59E0B !important;
   caret-color: #F59E0B;
   transition: background-color 5000s ease-in-out 0s;
+}
+
+
+/*_____________________Колір_карток______________________*/
+@utility bg-gold-custom {
+  @apply bg-gold-amber/5;
 }

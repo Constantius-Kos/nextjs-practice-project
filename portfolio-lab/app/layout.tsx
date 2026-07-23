@@ -6,7 +6,7 @@ import Header from "./components/lab/Header";
 import { Suspense } from "react";
 import PulseDashboard from "./components/lab/PulseDashboard";
 import LoginButtonContainer from "./components/lab/LoginButtonContainer";
-
+import { Toaster } from "sonner";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -46,6 +46,7 @@ export default async function RootLayout({
           <MobileHeader statusSlot={<PulseDashboard />} loginSlot={<LoginButtonContainer />} />
         </Suspense>
         {children}
+        <Toaster position="bottom-right" theme="dark" richColors />
       </body>
 
     </html>

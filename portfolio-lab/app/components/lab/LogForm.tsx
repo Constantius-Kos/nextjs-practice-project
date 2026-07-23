@@ -34,7 +34,7 @@ export default function LogForm({ addOptimisticLog }: LogFormProps) {
     const isValid = author.trim().length >= 2 && message.trim().length >= 3
 
     return (
-        <form action={handleSubmit} className="flex flex-col gap-4 p-4 border border-gold-deep/50 rounded-lg bg-black/40 backdrop-blur-md shadow-[0_0_10px_-5px_var(--gold-deep)] lg:shadow-[0_0_12px_-5px_var(--gold-deep)] ">
+        <form action={handleSubmit} className="flex flex-col gap-4 p-4 border border-gold-deep/50 rounded-lg bg-black/40 backdrop-blur-md shadow-[0_0_10px_-5px_var(--gold-deep)] lg:shadow-gold-glow ">
             <div className="flex flex-col gap-1">
                 <label htmlFor="author" className="text-xs uppercase tracking-tighter text-amber-500 font-mono">
                     [Identify Your Identity]
@@ -62,7 +62,7 @@ export default function LogForm({ addOptimisticLog }: LogFormProps) {
                     required
                     rows={3}
                     placeholder="Enter log data..."
-                    className="bg-transparent border border-amber-500/20 focus:border-amber-500 text-amber-400 font-mono outline-none p-2 rounded-sm transition-all resize-none"
+                    className="bg-transparent border border-amber-500/20 focus:border-amber-500 text-amber-400 font-mono outline-none p-2 rounded-sm transition-all resize-none scrollbar-custom"
                 />
             </div>
 
