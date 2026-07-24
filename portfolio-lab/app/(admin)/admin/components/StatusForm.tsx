@@ -16,7 +16,7 @@ function StatusForm({ session }: Props) {
 
     return (
         <div className="border border-gold-amber/30 rounded-xl w-80 h-80 p-4 bg-gold-custom  shadow-gold-glow m-auto ">
-            <form action={updateStatus} className=" flex flex-col gap-4">
+            <form action={async (formData) => { await updateStatus(formData); }} className=" flex flex-col gap-4">
 
                 {/* 1. Поле для введення коментаря */}
                 <input
