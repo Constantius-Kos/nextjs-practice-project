@@ -6,27 +6,47 @@ interface PageProps {
 }
 export default async function Home({ searchParams }: PageProps) {
   const resolvedSearchParams = await searchParams;
-  const currentView = resolvedSearchParams.view || 'terminal';
+  const currentView = resolvedSearchParams.view || 'profile';
+  const isProfile = currentView === 'profile';
+  const isTerminal = currentView === 'terminal';
+  const isLogs = currentView === 'logs';
+  const isProjets = currentView === 'projects'
   return (
 
 
-    <main className=' p-1 flex  flex-col flex-1 h-[calc(100dvh-3.5rem)] overflow-auto    w-full   lg:overflow-hidden lg:grid lg:grid-cols-12 lg:gap-4'>
 
-      <section className={` ${currentView !== 'logs' ? ' hidden' : ''}  animate-fade-in  flex flex-col h-full gap-4  w-ful lg:flex lg:col-span-3 lg:h-full lg:min-h-0 lg:overflow-scroll scrollbar-none`}>
-        <Suspense>
+    <div className="w-full flex-1 flex flex-col overflow-auto lg:overflow-hidden lg:grid lg:grid-cols-12 lg:grid-rows-[auto_1fr] lg:gap-4 p-1">
+
+      <section className={`${!isProfile ? ' hidden' : ''} debug-1 animate-fade-in   flex-col h-full gap-4  w-ful lg:flex lg:col-span-3 lg:row-span-2  lg:min-h-0 lg:overflow-scroll scrollbar-none`}>
+        {/* <Suspense>
           <AccessLogsContainer />
-        </Suspense>
+        </Suspense> */}
       </section>
 
-      <section className={`${currentView !== 'terminal' ? ' hidden' : ''} debug-cyan-1 gap-2 animate-fade-in h-[60dvh] overflow-hidden p-2  lg:flex  lg:col-span-9 lg:h-[60dvh]`}>
+      <section className={`${(isProfile || isProjets) ? ' hidden' : ''} debug-cyan-1 gap-2  h-full overflow-hidden p-2  lg:flex  lg:col-span-9 lg:h-[60dvh]`}>
 
-        <Suspense fallback={<div>Loading Terminal...</div>}>
-          <Terminal />
-        </Suspense>
+        <div className={`${!isTerminal ? ' hidden' : ''} debug-blue animate-fade-in h-[60dvh] lg:flex lg:h-full flex-1 p-2`}>
+          <Suspense fallback={null}>
+            <Terminal />
+          </Suspense>
+        </div>
+
+        <div className={`${!isLogs ? ' hidden' : ''} debug-cyan animate-fade-in h-full lg:w-1/4 p-2 lg:flex `}>
+          <Suspense fallback={null}>
+            <AccessLogsContainer />
+          </Suspense>
+        </div>
+
+      </section >
+
+      <section className={`${!isProjets ? ' hidden' : ''} debug-cyan-1 animate-fade-in gap-2  h-full overflow-hidden p-2  lg:flex   lg:col-span-9 `}>
+
       </section>
+    </div>
 
 
-    </main>
+
+
 
   );
 }

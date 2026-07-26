@@ -25,7 +25,7 @@ async function PulseDashboard() {
     const isLongText = statusText.length > 10;
 
     return (
-        <div className={`flex items-center w-full gap-2.5 px-3.5 py-1.5 rounded-full border border-amber-500 bg-zinc-950/40 backdrop-blur-md  font-mono  transition-all duration-500  ${config.glowClass} lg:max-w-1/2  `}>
+        <div className={`flex items-center w-full gap-2.5 px-3.5 py-1.5 rounded-full border border-amber-500 bg-zinc-950/40 backdrop-blur-md  font-mono  transition-all duration-500  ${config.glowClass} lg:w-2/3  `}>
 
             {/* Контейнер для LED-маячка */}
             <span className="relative flex h-2 w-2">

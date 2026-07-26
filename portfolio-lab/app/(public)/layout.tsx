@@ -3,9 +3,9 @@ import { Suspense } from "react";
 export default function Layout({ children }: Readonly<{
     children: React.ReactNode;
 }>) {
-    return <div>
-
-        <Suspense fallback={<div className="flex-1 flex items-center justify-center text-amber-500 font-mono">Loading laboratory console...</div>}>
+    return <main className="flex-1 min-h-0 w-full flex flex-col overflow-auto">
+        <Suspense fallback={null}>
             {children}
-        </Suspense></div>
+        </Suspense>
+    </main>
 }

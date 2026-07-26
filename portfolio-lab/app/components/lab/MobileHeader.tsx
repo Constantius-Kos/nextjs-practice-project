@@ -14,7 +14,7 @@ function MobileHeader({ statusSlot, loginSlot }: IMobileHeader) {
     const [isOpen, setIsOpen] = useState<boolean>(false)
 
     const searchParams = useSearchParams();
-    const currentView = searchParams.get('view') || 'terminal'; // Дефолтне значення — 'terminal'
+    const currentView = searchParams.get('view') || 'profile'; // Дефолтне значення — 'terminal'
 
     return (
         <header className=" sticky grid grid-cols-[3rem_1fr_7rem] top-0 left-0 w-full  h-14  z-10 lg:hidden">
@@ -48,7 +48,7 @@ function MobileHeader({ statusSlot, loginSlot }: IMobileHeader) {
             </div>
 
             {isOpen && (
-                <div className="fixed  top-14 left-2 right-2  h-[calc(100vh-4rem)] bg-black/50 backdrop-blur-md z-40 flex flex-col justify-between p-8 rounded-3xl font-mono border border-amber-500/40 ">
+                <div className="fixed  top-14 left-2 right-2  bottom-4 bg-black/50 backdrop-blur-md z-40 flex flex-col justify-between p-8 rounded-3xl font-mono border border-amber-500/40 ">
 
 
                     {/* Верхня інформаційна панель */}
@@ -57,7 +57,18 @@ function MobileHeader({ statusSlot, loginSlot }: IMobileHeader) {
                         <span>[Security: Level-1]</span>
                     </div>
                     {/* Основний блок посилань */}
-                    <nav className="flex flex-col gap-6 text-center">
+                    <nav className="flex flex-col gap-6 t">
+                        {/* Лінк на профіль */}
+                        <Link
+                            href="/?view=profile"
+                            onClick={() => setIsOpen(false)}
+                            className={`text-lg tracking-wider transition-all duration-200 py-3 ${currentView === 'profile'
+                                ? 'text-amber-500 font-bold border-l-2 border-r-2 border-amber-500 px-4'
+                                : 'text-amber-500/60 hover:text-amber-500'
+                                }`}
+                        >
+                            {currentView === 'profile' ? '> ' : ''} [01. DEV_PROFILE]
+                        </Link>
                         {/* Лінку на Термінал */}
                         <Link
                             href="/?view=terminal"
@@ -67,7 +78,7 @@ function MobileHeader({ statusSlot, loginSlot }: IMobileHeader) {
                                 : 'text-amber-500/60 hover:text-amber-500' // Неактивний
                                 }`}
                         >
-                            {currentView === 'terminal' ? '> ' : ''} [01. TERMINAL_HERO]
+                            {currentView === 'terminal' ? '> ' : ''} [02. LAB_TERMINAL]
                         </Link>
                         {/* Лінк на Логи */}
                         <Link
@@ -78,7 +89,17 @@ function MobileHeader({ statusSlot, loginSlot }: IMobileHeader) {
                                 : 'text-amber-500/60 hover:text-amber-500'
                                 }`}
                         >
-                            {currentView === 'logs' ? '> ' : ''} [02. ACCESS_LOGS]
+                            {currentView === 'logs' ? '> ' : ''} [03. ACCESS_LOGS]
+                        </Link>{/* Лінк на проекти */}
+                        <Link
+                            href="/?view=projects"
+                            onClick={() => setIsOpen(false)}
+                            className={`text-lg tracking-wider transition-all duration-200 py-3 ${currentView === 'projects'
+                                ? 'text-amber-500 font-bold border-l-2 border-r-2 border-amber-500 px-4'
+                                : 'text-amber-500/60 hover:text-amber-500'
+                                }`}
+                        >
+                            {currentView === 'projects' ? '> ' : ''} [04. PROJECT_HUB]
                         </Link>
                     </nav>
                     {/* Нижня інформаційна панель */}
