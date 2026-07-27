@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import Terminal from "../components/lab/Terminal";
 import AccessLogsContainer from "../components/lab/AccessLogsContainer";
+import DevProfile from "../components/lab/DevProfile";
 interface PageProps {
   searchParams: Promise<{ view?: string }>;
 }
@@ -15,12 +16,10 @@ export default async function Home({ searchParams }: PageProps) {
 
 
 
-    <div className="w-full flex-1 flex flex-col overflow-auto lg:overflow-hidden lg:grid lg:grid-cols-12 lg:grid-rows-[auto_1fr] lg:gap-4 p-1">
+    <div className="w-full flex-1 flex flex-col overflow-auto lg:overflow-hidden lg:grid lg:grid-cols-12 lg:grid-rows-[auto_1fr] lg:gap-2 p-1">
 
-      <section className={`${!isProfile ? ' hidden' : ''} debug-1 animate-fade-in   flex-col h-full gap-4  w-ful lg:flex lg:col-span-3 lg:row-span-2  lg:min-h-0 lg:overflow-scroll scrollbar-none`}>
-        {/* <Suspense>
-          <AccessLogsContainer />
-        </Suspense> */}
+      <section className={`${!isProfile ? ' hidden' : ''} debug-1 animate-fade-in flex  flex-col h-full gap-4  w-ful lg:flex lg:col-span-3 lg:row-span-2  lg:min-h-0 lg:overflow-scroll scrollbar-none`}>
+        <DevProfile />
       </section>
 
       <section className={`${(isProfile || isProjets) ? ' hidden' : ''} debug-cyan-1 gap-2  h-full overflow-hidden p-2  lg:flex  lg:col-span-9 lg:h-[60dvh]`}>
