@@ -140,6 +140,39 @@ body {
   animation: fadeIn 0.5s ease-out forwards;
 }
 
+/*__________анімація для DevInfo__________________*/
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@utility animate-slide-right {
+  animation: slideRight 0.5s ease-out
+}
+
+@utility animate-slide-let {
+  animation: slideLeft 0.5s ease-out
+}
+
 /*________________________________________________*/
 
 

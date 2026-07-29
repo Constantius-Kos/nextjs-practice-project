@@ -1,5 +1,7 @@
 'use client'
 import { useState } from "react"
+import StackList from "./StackList"
+import EducationList from "./EducationList"
 function DevInfo() {
     const [infoPage, setInfopage] = useState<number>(2)
 
@@ -8,13 +10,14 @@ function DevInfo() {
     }
 
     return (
-        <div className="border border-gold-deep/50 shadow-gold-glow bg-gold-custom rounded-lg flex-1">
-            <div className=" flex h-10 justify-evenly p-2  ">
-                <button className={`${infoPage === 1 ? 'text-glow  ' : ' bg-amber-500/20 cursor-pointer'} rounded-lg font-jetBrains-mono   w-1/3`} onClick={() => changeInfoPage(1)}>Stack</button>
+        <div className="border border-gold-deep/50 shadow-gold-glow bg-gold-custom rounded-lg flex flex-col gap-1 flex-1 p-1 relative overflow-hidden min-h-0 ">
+            <div className="debug-1 flex h-fit justify-evenly p-2 text-xs ">
+                <button className={`${infoPage === 1 ? 'text-glow bg-amber-500/40  ' : ' bg-amber-500/20 cursor-pointer'}  rounded-lg font-jetBrains-mono p-1   w-1/3 lg:p-2`} onClick={() => changeInfoPage(1)}>Stack</button>
                 {/* <div className="border-l border-l-gold-deep/50"></div> */}
-                <button className={`${infoPage === 2 ? 'text-glow  ' : ' bg-amber-500/20 cursor-pointer'} rounded-lg  font-jetBrains-mono   w-1/3`} onClick={() => changeInfoPage(2)}>Academic Background</button>
-
+                <button className={`${infoPage === 2 ? 'text-glow bg-amber-500/40   ' : ' bg-amber-500/20 cursor-pointer'}  rounded-lg  font-jetBrains-mono p-1   w-1/3 lg:p-2 `} onClick={() => changeInfoPage(2)}>Education</button>
             </div>
+            <div className={`debug-cyan-1 flex flex-1 p-1 overflow-hidden ${infoPage === 1 ? 'animate-slide-let' : 'animate-slide-right'} lg:text-[20px]  `} key={infoPage}>{infoPage === 1 ? <StackList /> : <EducationList />}</div>
+
         </div >
     )
 }
