@@ -8,7 +8,7 @@ function StackList() {
                     className="bg-black/30 border border-gold-deep/20 rounded p-2 flex flex-col gap-1.5 backdrop-blur-xs"
                 >
                     {/* Заголовок категорії */}
-                    <div className="flex items-center gap-1.5 text-amber-400 font-semibold border-b border-amber-500/20 pb-1 text-center">
+                    <div className=" flex items-center justify-center gap-1.5 text-amber-400 font-semibold border-b border-amber-500/20 pb-1 text-center">
                         <span>{category.icon}</span>
                         <span className="tracking-wide text-[11px] uppercase ">{category.title}</span>
                     </div>
@@ -17,10 +17,10 @@ function StackList() {
                         {category.skills.map((skill) => (
                             <li key={skill.name} className="flex flex-col">
                                 <div className="flex items-center gap-1.5">
-                                    <span className={skill.highlight ? "text-amber-400" : "text-amber-500/40"}>
+                                    <span className={skill.highlight ? "text-amber-400" : "text-amber-500/50"}>
                                         {skill.highlight ? "▶" : "•"}
                                     </span>
-                                    <span className={`font-medium ${skill.highlight ? "text-amber-300 text-glow" : "text-amber-200/80"}`}>
+                                    <span className={`font-medium ${skill.highlight ? "text-amber-300 text-glow" : "text-amber-200"}`}>
                                         {skill.name}
                                     </span>
                                 </div>
@@ -40,17 +40,3 @@ function StackList() {
 }
 export default StackList
 
-// import { STACK_DATA } from "@/app/data/labData"
-
-// function StackList() {
-//     return (
-//         <div className="debug-green-1 flex-1 text-xs overflow-y-scroll">
-//             {STACK_DATA.map((i) => <div className="debug-purple-1 flex flex-col" key={i.id}>
-//                 <div className="text-center">{i.title}</div>
-//                 {i.skills.map((s) => <div key={s.name} className="px-2">-{s.name}</div>)}
-//             </div>)}
-//         </div>
-//     )
-// }
-
-// export default StackList

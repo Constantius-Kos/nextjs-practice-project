@@ -105,6 +105,25 @@
 - [x] **5.6. Purge Action:** Створити Server Action `deleteLog` для видалення запису з гостьової книги за ID з оновленням кешу через `updateTag('logs')`.
 - [x] **5.7. Log Moderation UI:** Створити компонент `AccessLogModerator.tsx` з Cyber Grid таблицею (4 колонки) та кнопками швидкої модерації `[DELETE]`. (Реалізовано в `AccessLogTable.tsx` з функціональним видаленням та toast-сповіщеннями).
 
+---
+
+## 🎯 NOW: DevProfile & DevInfo Widget (Крок 6)
+*Мета: Реалізувати картку профілю з анімованим перемиканням стеку технологій та освіти.*
+
+### Layer 1: Skeleton & Structure
+- [x] Створити `DevProfile.tsx` та `DevInfo.tsx` з перемикачем вкладок (`Stack` / `Education`).
+- [x] Створити файл `app/data/labData.ts` з типізованими даними `STACK_DATA` та `EDUCATION_DATA`.
+
+### Layer 2: Muscles & Animations
+- [x] Налаштувати напрямки анімації (слайд вліво/вправо через `slideRight` і `slideLeft` keyframes).
+- [x] Забезпечити ре-маунтинг за допомогою `key={infoPage}` для спрацювання анімації входу.
+- [x] Створити компоненти `StackList.tsx` та `EducationList.tsx`.
+
+### Layer 3: Polish & Styling
+- [x] Додати підсвітку ключових технологій (`highlight: true`) з ефектом світіння `text-glow`.
+- [x] Оформити список вищої освіти (дипломи Магістра та Бакалавра) англійською мовою.
+- [x] Налаштувати адаптивну типографіку та кастомний скроллбар `scrollbar-custom`.
+
 
 ---
 

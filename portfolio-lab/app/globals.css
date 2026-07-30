@@ -29,7 +29,7 @@
   --font-monserrat: var(--font-monserrat);
   --font-jetBrains-mono: var(--font-jetBrains-mono);
 
-  --shadow-gold-glow: 0 0 10px -5px var(--gold-deep);
+  --shadow-gold-glow: 0 0 9px -5px var(--gold-deep);
 
   /* --bg-gold-custom: bg-gold-amber/5 */
 }
@@ -213,6 +213,10 @@ body {
 .scrollbar-custom::-webkit-scrollbar-thumb:hover {
   background-color: rgba(245, 158, 11, 0.5);
   cursor: pointer;
+}
+
+.scrollbar-custom::-webkit-scrollbar-corner {
+  background: transparent;
 }
 
 /*__________________Бігуча_строка_статусу________________*/

@@ -58,7 +58,7 @@ export const STACK_DATA: StackCategory[] = [
     icon: "🤖",
     skills: [
       { name: "Git & GitHub Actions", detail: "Version control & CI/CD basics" },
-      { name: "Cursor IDE & Antigravity", detail: "AI Pair Programming & Workflow", highlight: true },
+      { name: "Visual Studio Code & Antigravity IDE", detail: "AI Pair Programming & Workflow", highlight: true },
       { name: "Claude Code & DevTools", detail: "Debugging & prompt engineering" },
     ],
   },

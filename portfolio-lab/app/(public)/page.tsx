@@ -16,21 +16,21 @@ export default async function Home({ searchParams }: PageProps) {
 
 
 
-    <div className="w-full flex-1 flex flex-col overflow-auto lg:overflow-hidden lg:grid lg:grid-cols-12 lg:grid-rows-[auto_1fr] lg:gap-2 p-1">
+    <div className=" w-full flex-1 flex flex-col  lg:grid lg:grid-cols-12 lg:grid-rows-[auto_1fr] lg:gap-3 lg:min-h-0 ">
 
-      <section className={`${!isProfile ? ' hidden' : ''} debug-1 animate-fade-in flex  flex-col h-full gap-4  w-ful lg:flex lg:col-span-3 lg:row-span-2  lg:min-h-0 lg:overflow-scroll scrollbar-none`}>
+      <section className={`${!isProfile ? ' hidden' : ''}   animate-fade-in flex  flex-col h-full gap-4  w-ful lg:flex lg:col-span-3 lg:row-span-2  lg:min-h-0 scrollbar-none `}>
         <DevProfile />
       </section>
 
-      <section className={`${(isProfile || isProjets) ? ' hidden' : ''} debug-cyan-1 gap-2  h-full overflow-hidden p-2  lg:flex  lg:col-span-9 lg:h-[60dvh]`}>
+      <section className={`${(isProfile || isProjets) ? ' hidden' : ''}  gap-2  h-full   lg:flex  lg:col-span-9 lg:h-[60dvh] lg:text-xs lg:gap-3 `}>
 
-        <div className={`${!isTerminal ? ' hidden' : ''} debug-blue animate-fade-in h-[60dvh] lg:flex lg:h-full flex-1 p-2`}>
+        <div className={`${!isTerminal ? ' hidden' : ''}  animate-fade-in h-[70dvh] lg:flex lg:h-full flex-1 p-1 lg:p-px`}>
           <Suspense fallback={null}>
             <Terminal />
           </Suspense>
         </div>
 
-        <div className={`${!isLogs ? ' hidden' : ''} debug-cyan animate-fade-in h-full lg:w-1/4 p-2 lg:flex `}>
+        <div className={`${!isLogs ? ' hidden' : ''} animate-fade-in h-full lg:w-1/3  p-2 lg:flex lg:p-0 `}>
           <Suspense fallback={null}>
             <AccessLogsContainer />
           </Suspense>
@@ -38,7 +38,7 @@ export default async function Home({ searchParams }: PageProps) {
 
       </section >
 
-      <section className={`${!isProjets ? ' hidden' : ''} debug-cyan-1 animate-fade-in gap-2  h-full overflow-hidden p-2  lg:flex   lg:col-span-9 `}>
+      <section className={`${!isProjets ? ' hidden' : ''} lg:p-3  animate-fade-in gap-2  h-full overflow-hidden p-2  lg:flex   lg:col-span-9 `}>
 
       </section>
     </div>
