@@ -20,6 +20,7 @@ declare module "next-auth" {
 
 // 2. Основний конфіг
 export const { handlers, auth, signIn, signOut } = NextAuth({
+    trustHost: true, // 👈 Дозволяє Auth.js довіряти заголовкам проксі Vercel
     adapter: PrismaAdapter(db),
     providers: [
         GitHub({
