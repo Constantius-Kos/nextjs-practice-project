@@ -1,7 +1,7 @@
 'use server'
 
 import { db } from './prisma'
-import { revalidatePath, revalidateTag, updateTag } from 'next/cache'
+import { updateTag } from 'next/cache'
 import { signIn, signOut } from '@/app/lib/auth'
 
 export async function createLogAction(formData: FormData) {

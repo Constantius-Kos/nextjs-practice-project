@@ -86,6 +86,12 @@
 - [x] Оформити блок у стилі "Telemetry Panel" (капсула з ефектом Glassmorphism `bg-black/40 backdrop-blur-md` та світінням `shadow-[0_0_15px_-5px_var(--gold-deep)]`).
 - [ ] ~~Приховати невикористані елементи інтерфейсу...~~ *(Відкладено в Icebox)*
 
+### Layer 4: Status History & Telemetry Popover (Крок 4.3.X — В процесі 🟢)
+- [x] **4.3.1. DB Mutation & Query History:** Переведено `updateStatus` на `db.status.create(...)` для збереження історії та `getStatus` на `orderBy: { updatedAt: 'desc' }`.
+- [x] **4.3.2. Status History Fetcher (`getStatusHistory.ts`):** Створено серверний модуль завантаження 10 останніх статусів з кешуванням Next.js 16 (`'use cache'`, `cacheTag('status')`) та обробкою помилок.
+- [x] **4.3.4. PulseDashboard Server Integration:** Інтегровано `getStatusHistory()` у `PulseDashboard.tsx` та використано патерн Composition (`StatusHistoryPopover` огортає статус через `children`).
+- [ ] **4.3.3. Status History Popover UI & Polish (`StatusHistoryPopover.tsx`):** Доробити верстку списку логів статусу (Cyber Log стилізація, LED-вогники, дата/час) та обробники закриття (`ClickOutside`/`Esc`).
+
 ---
 
 ## 🎯 NOW: Admin Panel & Root Console (Крок 5)
@@ -99,6 +105,7 @@
 ### Layer 2: Telemetry Control (Панель Статусу)
 - [x] **5.4. Status Action:** Створити Server Action для запису оновленого статусу в БД з викликом `updateTag('status')`.
 - [x] **5.5. Status Switcher Form:** Створити форму `components/admin/StatusForm.tsx` (клієнтська форма керування статусом).
+- [ ] **5.8. StatusForm Error Handling:** Реалізувати обробку результату виконання `updateStatus` (помилки/успіх) та відображення повідомлень (Toast/State) в `components/admin/StatusForm.tsx`.
 - [x] **5.6. Suspense Fix (Build Error):** Огорнути логіку використання динамічних `searchParams` на сторінці адмінки (`page.tsx`) у дочірній компонент та `<Suspense>`.
 
 ### Layer 3: Moderation (Модерація логів)
@@ -127,8 +134,27 @@
 
 ---
 
+## 🎯 NOW: Projects Hub & Dynamic Route Architecture (Крок 7)
+*Мета: Реалізувати візуальну сітку проєктів із переходом на динамічні сторінки `projects/[slug]`.*
+
+### Layer 1: Data & Types Architecture
+- [x] **7.1. Shared Types:** Створити централізований інтерфейс `Project` у `types/shared.ts`.
+- [x] **7.2. Projects Data:** Створити `app/data/projectsData.ts` з типізованим масивом `PROJECTS_DATA` та відносними шляхами до WebP-зображень.
+
+### Layer 2: UI & Icon Grid Component
+- [x] **7.3. ProjectIcon Component:** Створити компонент `components/lab/ProjectIcon.tsx` з підтримкою `next/image` та пропсів.
+- [x] **7.4. Cyber FX & Glow Styling:** Налаштувати ефекти тіней та світіння через CSS-фільтри (`filter-[...]`) з підтримкою золотистого ореолу та вирівнюванням контуру.
+- [x] **7.5. Grid Layout Integration:** Впровадити мапінг проєктів у 5-колонкову сітку (`grid grid-cols-5 content-start`) в `app/(public)/page.tsx`.
+
+### Layer 3: Dynamic Project Pages *(Відкладено)*
+- [ ] ~~**7.6. Dynamic Route `[slug]`:** Створити структуру `app/(public)/projects/[slug]/page.tsx` для кожної сторінки проєкту.~~ *(Відкладено)*
+- [ ] ~~**7.7. Static Params Optimization:** Реалізувати `generateStaticParams()` для SSG-генерації сторінок проєктів під час збірки.~~ *(Відкладено)*
+
+---
+
 ## 📅 NEXT
 - [x] **Auth Integration**: Додати можливість авторизації (вхід/вихід через провайдери GitHub/Google) — *інтегровано в Header клієнтську модалку та Server Actions*.
+
 
 ---
 

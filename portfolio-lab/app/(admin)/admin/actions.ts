@@ -25,7 +25,7 @@ export async function updateStatus(formData: FormData): Promise<BaseActionRespon
     }
     // 3. Виконання мутації в БД з описом помилок
     try {
-        await db.status.updateMany({
+        await db.status.create({
             data: {
                 indicator: indicatorValue,
                 text: textValue

@@ -6,6 +6,6 @@ export async function getStatus(): Promise<Status | null> {
     'use cache'
     cacheTag('status')
     cacheLife('infinite')
-    const status = await db.status.findFirst()
+    const status = await db.status.findFirst({ orderBy: { updatedAt: 'desc' } })
     return status
 }

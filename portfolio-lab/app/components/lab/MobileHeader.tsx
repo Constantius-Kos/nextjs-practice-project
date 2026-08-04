@@ -17,10 +17,10 @@ function MobileHeader({ statusSlot, loginSlot }: IMobileHeader) {
     const currentView = searchParams.get('view') || 'profile'; // Дефолтне значення — 'terminal'
 
     return (
-        <header className=" sticky grid grid-cols-[3rem_1fr_7rem] top-0 left-0 w-full  h-14  z-10 lg:hidden">
+        <header className=" sticky grid grid-cols-[3rem_1fr_7rem] top-0 left-0 w-full  h-14  z-10  lg:hidden">
             <button
                 onClick={() => setIsOpen(!isOpen)}
-                className=" flex flex-col justify-center items-center h-14 gap-1.5 z-50 cursor-pointer"
+                className=" flex flex-col justify-center items-center h-14 gap-1.5 z-10 cursor-pointer"
                 aria-label="Toggle Menu"
             >
                 {/* Верхня смужка */}
@@ -39,7 +39,7 @@ function MobileHeader({ statusSlot, loginSlot }: IMobileHeader) {
                     : ''
                     }`} />
             </button>
-            <div className=" h-full flex items-center overflow-hidden ">
+            <div className=" h-full flex items-center  ">
 
                 {statusSlot}
             </div>
