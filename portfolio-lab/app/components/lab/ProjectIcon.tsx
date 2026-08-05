@@ -8,7 +8,7 @@ function ProjectIcon({ project }: { project: Project }) {
                 alt={project.name}
                 width={64}
                 height={64}
-                className="debug-red-1 w-full h-full object-contain  rounded-3xl filter-[drop-shadow(0_0_5px_var(--gold-deep))]"
+                className=" w-full h-full object-contain  rounded-3xl filter-[drop-shadow(0_0_5px_var(--gold-deep))]"
             />
         </div>
     );

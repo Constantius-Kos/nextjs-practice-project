@@ -39,7 +39,7 @@ function MobileHeader({ statusSlot, loginSlot }: IMobileHeader) {
                     : ''
                     }`} />
             </button>
-            <div className=" h-full flex items-center  ">
+            <div className="debug-gold h-full flex min-w-0 items-center  ">
 
                 {statusSlot}
             </div>

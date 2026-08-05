@@ -86,11 +86,12 @@
 - [x] Оформити блок у стилі "Telemetry Panel" (капсула з ефектом Glassmorphism `bg-black/40 backdrop-blur-md` та світінням `shadow-[0_0_15px_-5px_var(--gold-deep)]`).
 - [ ] ~~Приховати невикористані елементи інтерфейсу...~~ *(Відкладено в Icebox)*
 
-### Layer 4: Status History & Telemetry Popover (Крок 4.3.X — В процесі 🟢)
+### Layer 4: Status History & Telemetry Popover (Крок 4.3.X — Завершено ✅)
 - [x] **4.3.1. DB Mutation & Query History:** Переведено `updateStatus` на `db.status.create(...)` для збереження історії та `getStatus` на `orderBy: { updatedAt: 'desc' }`.
 - [x] **4.3.2. Status History Fetcher (`getStatusHistory.ts`):** Створено серверний модуль завантаження 10 останніх статусів з кешуванням Next.js 16 (`'use cache'`, `cacheTag('status')`) та обробкою помилок.
-- [x] **4.3.4. PulseDashboard Server Integration:** Інтегровано `getStatusHistory()` у `PulseDashboard.tsx` та використано патерн Composition (`StatusHistoryPopover` огортає статус через `children`).
-- [ ] **4.3.3. Status History Popover UI & Polish (`StatusHistoryPopover.tsx`):** Доробити верстку списку логів статусу (Cyber Log стилізація, LED-вогники, дата/час) та обробники закриття (`ClickOutside`/`Esc`).
+- [x] **4.3.4. Component Refactoring & Composition:** Розділено `PulseDashboard.tsx` на чистий оркестратор, `StatusBadge.tsx`, `StatusPlusPopoverWrapper.tsx` та `StatusHistoryList.tsx`.
+- [x] **4.3.5. Mobile Stacking Context Fix:** Виправлено `z-index` та порядок шарів у `MobileHeader.tsx` для правильного відображення випадаючого вікна історії над нижніми блоками.
+- [ ] **4.3.6. Popover Polish & UX:** Доробити фінальну Cyber Log стилізацію списку логів статусу та додати обробники закриття (`ClickOutside`/`Esc`).
 
 ---
 

@@ -1,7 +1,9 @@
+'use client'
 import type { Status } from "@prisma/client"
 import { STATUS_MAP } from "@/app/lib/constants/status";
 import { StatusIndicator } from "@prisma/client";
-
+import { useRef } from "react";
+import { useIsOverflow } from "@/app/hooks/useIsOverflow";
 
 
 
@@ -22,9 +24,12 @@ function StatusBadge({ status }: IProps) {
     // Якщо в базі порожньо, використовуємо назву статусу з конфігу (наприклад, "OFFLINE").
     const statusText = status?.text || config.label
     const date = status?.updatedAt.toLocaleDateString()
-    const isLongText = statusText.length > 10;
+    const containerRef = useRef<HTMLDivElement>(null);
+    const textRef = useRef<HTMLSpanElement>(null);
+    const isLongText = useIsOverflow(containerRef, textRef, statusText);
+
     return (
-        <div className={` z-20 flex items-center w-full gap-2.5 px-3.5 py-1.5 rounded-full border border-amber-500 bg-zinc-950 backdrop-blur-md  font-mono  transition-all duration-500  ${config.glowClass} w-full `}>
+        <div className={` z-20 flex items-center w-full gap-1 pl-3.5 pr-2 py-1.5 rounded-full border border-amber-500 bg-zinc-950 backdrop-blur-md  font-mono  transition-all duration-500  ${config.glowClass} w-full `}>
 
             {/* Контейнер для LED-маячка */}
             <span className="relative flex h-2 w-2">
@@ -42,14 +47,15 @@ function StatusBadge({ status }: IProps) {
             </span>
 
             {/* Текстова мітка статусу з бази даних */}
-            <span className="tracking-wide uppercase text-[10px] lg:text-xs  mr-1 border-r border-amber-500/20 pr-2">
+            <span className="tracking-wide uppercase text-[10px] lg:text-xs  mr-px border-r border-amber-500/20 pr-1">
                 {config.label}
             </span>
+
             {/* 1. Обгортка, яка ховає текст, що виходить за межі */}
-            <div className={`flex-1 overflow-hidden min-w-0 flex ${isLongText ? "justify-start lg:justify-center" : "justify-center"}`}>
+            <div className={`flex-1 overflow-hidden min-w-0 flex ${isLongText ? "justify-start lg:justify-center" : "justify-center"}`} ref={containerRef}>
 
                 <span className={`inline-block whitespace-nowrap  font-sans tracking-normal select-none text-xs lg:text-sm ${isLongText ? "animate-marquee-single" : ""
-                    }`}>
+                    }`} ref={textRef}>
                     <span className="text-[9px] mr-1">{date}:</span>
                     {statusText}
                 </span>

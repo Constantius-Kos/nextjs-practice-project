@@ -1,5 +1,5 @@
 'use client'
-
+import { useEffect, useRef } from "react"
 import type { Status } from "@prisma/client"
 import { useState } from "react"
 import StatusHistoryList from "./StatusHistoryList"
@@ -12,15 +12,37 @@ interface IProps {
 function StatusPusPopoverWrapper({ history, children }: IProps) {
 
     const [isOpen, setIsOpen] = useState<boolean>(false)
+    const popoverRef = useRef<HTMLDivElement>(null);
+
+
+    useEffect(() => {
+        // 1. Функція, яка перевіряє, куди влучив клік
+        const handleClickOutside = (event: MouseEvent) => {
+            // Якщо посилання існує і клікнутий елемент НЕ всередині popoverRef
+            if (popoverRef.current && !popoverRef.current.contains(event.target as Node)) {
+                setIsOpen(false);
+            }
+        };
+        // 2. Якщо меню відкрите - вішаємо слухача на весь документ
+        if (isOpen) {
+            document.addEventListener('mousedown', handleClickOutside);
+        }
+        // 3. Обов'язкове прибирання (cleanup): знімаємо слухача при закритті або unmount
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [isOpen]); // Ефект перезапускається тільки коли змінюється isOpen
+
     return (
-        <div className="debug-1 relative lg:w-3/4">
+        <div className=" relative min-w-0 lg:w-3/4" ref={popoverRef}>
 
             <div className="cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
                 {children}
             </div>
 
 
-            {isOpen && <StatusHistoryList history={history} />}
+
+            <StatusHistoryList history={history} isOpen={isOpen} />
         </div>
     )
 }
