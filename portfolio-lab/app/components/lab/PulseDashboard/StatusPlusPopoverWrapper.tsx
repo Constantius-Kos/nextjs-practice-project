@@ -34,7 +34,7 @@ function StatusPusPopoverWrapper({ history, children }: IProps) {
     }, [isOpen]); // Ефект перезапускається тільки коли змінюється isOpen
 
     return (
-        <div className=" relative min-w-0 lg:w-3/4" ref={popoverRef}>
+        <div className=" relative  min-w-0 w-full  sm:w-3/4 sm:mx-auto" ref={popoverRef}>
 
             <div className="cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
                 {children}

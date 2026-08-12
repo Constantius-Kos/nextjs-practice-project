@@ -4,7 +4,7 @@ import "./globals.css";
 import MobileHeader from "./components/lab/MobileHeader";
 import Header from "./components/lab/Header";
 import { Suspense } from "react";
-import PulseDashboard from "./components/lab/PulseDashboard";
+import PulseDashboard from "./components/lab/PulseDashboard/PulseDashboard";
 import LoginButtonContainer from "./components/lab/LoginButtonContainer";
 import { Toaster } from "sonner";
 const geistSans = Geist({
@@ -40,13 +40,13 @@ export default async function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} ${jetBrainsMono.variable} ${montserrat.variable} h-full antialiased`}
     >
-      <body className=" h-dvh  flex flex-col lg:h-dvh p-1">
-        <Suspense fallback={<div>Loading...</div>}>
+      <body className=" h-dvh    flex flex-col lg:h-dvh p-1">
+        <Suspense fallback={null}>
           <Header />
           <MobileHeader statusSlot={<PulseDashboard />} loginSlot={<LoginButtonContainer />} />
+          {children}
+          <Toaster position="bottom-right" theme="dark" richColors />
         </Suspense>
-        {children}
-        <Toaster position="bottom-right" theme="dark" richColors />
       </body>
 
     </html>

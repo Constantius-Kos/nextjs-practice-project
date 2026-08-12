@@ -18,7 +18,7 @@ async function Terminal() {
     // console.log('Terminal.tsx:', commits, '***Terminal.tsx***');
     return (
         // 1. Головна "коробка" з рамкою та розмиттям фону
-        <div className=" w-full   rounded-lg border border-gold-deep/50 bg-[#0a0a0a]/80 backdrop-blur-md shadow-gold-glow flex flex-col h-full overflow-hidden ">
+        <div className=" w-full   rounded-lg border border-gold-deep/50 bg-[#0a0a0a]/80 backdrop-blur-md shadow-gold-glow flex flex-col h-full font-jetBrains-mono overflow-hidden ">
 
             {/* 2. Шапка терміналу */}
             <div className="bg-white/5 px-4 py-2 flex items-center justify-between border-b border-white/5 rounded-t-md">
@@ -37,7 +37,7 @@ async function Terminal() {
                 <div className="absolute inset-0 pointer-events-none scan-lines z-20" />
 
                 {/* Внутрішній скрол-контейнер: саме тут знаходиться текст і скрол */}
-                <div className="h-full overflow-y-auto scrollbar-custom p-3 font-jetBrains-mono   lg:p-6">
+                <div className="h-full overflow-y-auto scrollbar-custom p-3  lg:p-6">
                     <TypewriterEffect lines={allLines} />
                 </div>
             </div>

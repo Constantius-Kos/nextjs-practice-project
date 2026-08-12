@@ -1,0 +1,22 @@
+# Root .gitignore for NextJS-Learning course workspace
+
+# Node dependencies & build outputs
+node_modules/
+.next/
+out/
+build/
+dist/
+
+# Environment variables
+.env
+.env*.local
+
+# OS / IDE metadata
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
+
+# External / Standalone Projects (add new nested project folders here)
+poker-lab/

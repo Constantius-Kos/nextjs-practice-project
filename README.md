@@ -85,7 +85,8 @@
 - **Фаза:** 3 (Production)
 - **Уроків завершено:** 29 / 30
 - **Проектів завершено:** 3 / 6
-- **Статус:** 🧪 РОЗРОБКА: Крок 5 (Admin Panel & Root Console). Server Actions для статусу (`updateStatus`) та модерації/видалення логів (`deleteLog`) вже створено та підключено.
+- **Статус:** 🧪 РОЗРОБКА: Крок 7 (Projects Hub & Dynamic Route Architecture). Завершено Крок 7.6 (верстка `projects/[slug]`, безпека `target="_blank" rel="noopener noreferrer"`, `disabled` стани та єдиний `Suspense`). Наступний: Крок 7.7 (`generateStaticParams`).
+
 
 ---
 

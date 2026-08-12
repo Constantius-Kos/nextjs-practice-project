@@ -91,7 +91,7 @@
 - [x] **4.3.2. Status History Fetcher (`getStatusHistory.ts`):** Створено серверний модуль завантаження 10 останніх статусів з кешуванням Next.js 16 (`'use cache'`, `cacheTag('status')`) та обробкою помилок.
 - [x] **4.3.4. Component Refactoring & Composition:** Розділено `PulseDashboard.tsx` на чистий оркестратор, `StatusBadge.tsx`, `StatusPlusPopoverWrapper.tsx` та `StatusHistoryList.tsx`.
 - [x] **4.3.5. Mobile Stacking Context Fix:** Виправлено `z-index` та порядок шарів у `MobileHeader.tsx` для правильного відображення випадаючого вікна історії над нижніми блоками.
-- [ ] **4.3.6. Popover Polish & UX:** Доробити фінальну Cyber Log стилізацію списку логів статусу та додати обробники закриття (`ClickOutside`/`Esc`).
+- [x] **4.3.6. Popover Polish & UX:** Дороблено фінальну Cyber Log стилізацію списку логів статусу, плавні CSS-переходи (`opacity`/`scale`), кастомний хук `useIsOverflow` (з `ResizeObserver`) та обробники закриття (`ClickOutside`).
 
 ---
 
@@ -147,9 +147,11 @@
 - [x] **7.4. Cyber FX & Glow Styling:** Налаштувати ефекти тіней та світіння через CSS-фільтри (`filter-[...]`) з підтримкою золотистого ореолу та вирівнюванням контуру.
 - [x] **7.5. Grid Layout Integration:** Впровадити мапінг проєктів у 5-колонкову сітку (`grid grid-cols-5 content-start`) в `app/(public)/page.tsx`.
 
-### Layer 3: Dynamic Project Pages *(Відкладено)*
-- [ ] ~~**7.6. Dynamic Route `[slug]`:** Створити структуру `app/(public)/projects/[slug]/page.tsx` для кожної сторінки проєкту.~~ *(Відкладено)*
-- [ ] ~~**7.7. Static Params Optimization:** Реалізувати `generateStaticParams()` для SSG-генерації сторінок проєктів під час збірки.~~ *(Відкладено)*
+### Layer 3: Dynamic Project Pages
+- [x] **7.6. Dynamic Route `[slug]`:** Створити структуру `app/(public)/projects/[slug]/page.tsx` (зчитування `await params`, вибірка даних проєкту через `.find()`, обробка `notFound()`, адаптивна верстка картки проєкту, безпечні посилання `target="_blank"` з `rel="noopener noreferrer"` та неактивні стани `cursor-not-allowed`).
+- [x] **7.7. Static Params Optimization:** Реалізувати `generateStaticParams()` для SSG-генерації сторінок проєктів під час збірки.
+
+
 
 ---
 
@@ -160,10 +162,16 @@
 ---
 
 ## ❄️ Icebox (Ідеї на майбутнє)
+- [ ] **Багатомовність (i18n):** Впровадження підходу `app/[lang]/...` без зовнішніх залежностей.
+  - Динамічний роутинг мов (`[lang]`: `'uk'` | `'en'`).
+  - Мультимовні об'єкти опису (`description: { uk: '...', en: '...' }`).
+  - Компонент-перемикач `LanguageSwitcher` через `usePathname()` та заміну мовного префіксу.
+  - Автоматичний редирект невідомих мов / фолбек на дефолтну мову.
 - [ ] **З Кроку 4.3 (Pulse Dashboard):** Локалізація часу оновлення статусу українською.
 - [ ] **З Кроку 4.3 (Pulse Dashboard):** Адаптивне приховування синхронізованої дати на дуже малих екранах.
 - [ ] Звуковий супровід друку на клавіатурі.
 - [ ] Можливість вводити команди в термінал (інтерактивна консоль).
 - [ ] Ефект "старого CRT-монітора" (скануючі лінії).
+
 
 

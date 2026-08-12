@@ -5,9 +5,9 @@ import AccessLogs from "./AccessLogs"
 async function AccessLogsContainer() {
     const logs = await getLogs()
     return (
-        <>
-            <AccessLogs logs={logs} />
-        </>
+
+        <AccessLogs logs={logs} />
+
     )
 }
 

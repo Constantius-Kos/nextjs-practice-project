@@ -253,5 +253,5 @@ input:-webkit-autofill:active {
 
 /*_____________________Колір_карток______________________*/
 @utility bg-gold-custom {
-  @apply bg-gold-amber/1;
+  @apply bg-gold-amber/6;
 }

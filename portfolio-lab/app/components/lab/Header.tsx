@@ -1,6 +1,6 @@
 // Серверний компонент з імпортом клієнтського батона
 // import { auth } from "@/app/lib/auth";
-import PulseDashboard from "./PulseDashboard"
+import PulseDashboard from "./PulseDashboard/PulseDashboard"
 import LoginButtonContainer from "./LoginButtonContainer";
 import Link from "next/link";
 

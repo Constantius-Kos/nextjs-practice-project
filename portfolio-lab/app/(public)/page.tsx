@@ -1,9 +1,8 @@
 import { Suspense } from "react";
 import Terminal from "../components/lab/Terminal";
 import AccessLogsContainer from "../components/lab/AccessLogsContainer";
-import DevProfile from "../components/lab/DevProfile";
-import { PROJECTS_DATA } from "../data/projectsData";
-import ProjectIcon from "../components/lab/ProjectIcon";
+import DevProfile from "../components/lab/DevInfo/DevProfile";
+import ProjectsContainer from "../components/lab/Projects/ProjectsContainer";
 
 
 interface PageProps {
@@ -44,18 +43,8 @@ export default async function Home({ searchParams }: PageProps) {
 
       </section >
 
-      <section className={`${!isProjets ? ' hidden' : ''} border border-gold-deep/50 rounded-lg gap-3 p-3   animate-fade-in grid grid-cols-5 content-start  h-full    lg:col-span-9 lg:flex lg:overflow-y-auto lg:flex-wrap lg:justify-center lg:p-1 lg:gap-2 lg:items-start scrollbar-custom `}>
-        {PROJECTS_DATA.map((p) => {
-          return (
-
-            <ProjectIcon key={p.slug} project={p} />
-
-
-
-
-          )
-        })}
-
+      <section className={`${!isProjets ? ' hidden' : ''} p-2 min-h-0 flex flex-1   animate-fade-in     lg:col-span-9 lg:flex  lg:p-0   `}>
+        <ProjectsContainer />
       </section>
     </div>
 
