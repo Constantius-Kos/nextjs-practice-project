@@ -4,11 +4,11 @@ import type { Log } from '@prisma/client'
 import LogForm from './LogForm'
 
 
-interface iProps {
+type AccessLogsProps = {
     logs: Log[]
 }
 
-function AccessLogs({ logs }: iProps) {
+function AccessLogs({ logs }: AccessLogsProps) {
     const [optimisticLogs, addOptimisticLog] = useOptimistic(
         logs,
         (state, newLog: Log) => [newLog, ...state]

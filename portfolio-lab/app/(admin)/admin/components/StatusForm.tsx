@@ -22,6 +22,7 @@ function StatusForm({ session }: Props) {
                 <input
                     type="text"
                     name="text"
+                    spellCheck="false"
                     placeholder="Введіть статус..."
                     className="block w-full text-center py-1.5 border border-amber-500/20 bg-black text-amber-500/80 font-jetBrains-mono text-sm focus:outline-none focus:border-amber-500 focus:shadow-[0_0_8px_rgba(245,158,11,0.4)] transition-all duration-300 rounded-md"
                 />
